@@ -1,7 +1,7 @@
 
 # Qdrant Web UI v0.2.5 中文翻译版
 
-> 本项目是 Qdrant Web UI v0.2.5 AI中文翻译版，旨在让初学者更容易上手Qdrant向量数据库，本项目将其node_modules中的其中一个表单依赖（CreateCollectionForm）转移至component文件夹下，与项目同时构建，以下是原版README的中文翻译。
+> 本项目是 Qdrant Web UI v0.2.5 AI中文翻译版，旨在让初学者更容易上手Qdrant向量数据库，本项目将其node_modules中的其中一个表单依赖（CreateCollectionForm）转移至component文件夹下，与项目同时构建，官方原版在：[qdrant-web-ui](https://github.com/qdrant/qdrant-web-ui)，以下是原版README的中文翻译。
 
 这是一个面向 [Qdrant](https://github.com/qdrant/qdrant) 向量搜索引擎的**自托管 Web 管理界面**。
 
