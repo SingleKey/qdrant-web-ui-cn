@@ -73,7 +73,7 @@ function PointImage({ data, sx }) {
         slotProps={{
           backdrop: {
             sx: { cursor: 'pointer' },
-            title: 'Click to close',
+            title: '点击关闭',
           },
         }}
       >
@@ -103,7 +103,7 @@ function PointImage({ data, sx }) {
               borderRadius: '5px',
             }}
           >
-            Close [ESC]
+            关闭 [ESC]
           </Typography>
           <img
             src={fullScreenImg}

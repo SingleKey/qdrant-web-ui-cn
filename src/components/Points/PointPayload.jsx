@@ -17,23 +17,23 @@ const PointPayload = ({ point, showImage = true, onPayloadEdit, setLoading, butt
 
   return (
     <>
-      <Box display={'flex'} justifyContent={'space-between'} aria-label="Point Payload">
+      <Box display={'flex'} justifyContent={'space-between'} aria-label="点负载">
         <Box>
           <Box display="flex" alignItems="center" gap={1}>
             <Typography variant="subtitle2" marginRight={'24px'}>
-              Payload
+              负载
             </Typography>
             {buttonsToShow.includes('copy') && (
               <CopyButton
                 text={bigIntJSON.stringify(point.payload)}
-                tooltip={'Copy payload to clipboard'}
-                successMessage={'Payload JSON copied to clipboard.'}
+                tooltip={'复制负载到剪贴板'}
+                successMessage={'负载JSON已复制到剪贴板'}
               />
             )}
             {buttonsToShow.includes('edit') && (
-              <Tooltip title={'Edit payload'} placement={'left'}>
+              <Tooltip title={'编辑负载'} placement={'left'}>
                 <IconButton
-                  aria-label="add payload"
+                  aria-label="编辑负载"
                   onClick={() => setOpenPayloadEditor(true)}
                   sx={{ color: 'text.primary' }}
                 >
@@ -59,7 +59,7 @@ const PointPayload = ({ point, showImage = true, onPayloadEdit, setLoading, butt
         onClose={() => setOpenPayloadEditor(false)}
         onSave={onPayloadEdit}
         setLoading={setLoading || (() => {})}
-        aria-label="Payload Editor"
+        aria-label="负载编辑器"
       />
     </>
   );

@@ -35,8 +35,8 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
       <Tooltip
         title={
           isRestricted
-            ? 'Access Denied: You do not have permission to upload snapshot. ' + 'Please contact your administrator.'
-            : 'Upload snapshot'
+            ? '访问被拒绝：您没有上传快照的权限，请联系管理员。'
+            : '上传快照'
         }
         placement="left"
       >
@@ -47,7 +47,7 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
             startIcon={<UploadFile fontSize={'small'} />}
             disabled={isRestricted}
           >
-            Upload snapshot
+            上传快照
           </Button>
         </span>
       </Tooltip>
@@ -58,10 +58,10 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
         maxWidth={'sm'}
         open={open}
         onClose={() => setOpen(false)}
-        aria-labelledby="Snapshot upload dialog"
-        aria-describedby="Snapshot upload dialog"
+        aria-labelledby="快照上传对话框"
+        aria-describedby="快照上传对话框"
       >
-        <DialogTitle>Upload a Snapshot</DialogTitle>
+        <DialogTitle>上传快照</DialogTitle>
         <DialogContent>
           <SnapshotUploadForm onSubmit={handleUpload} onComplete={onComplete} />
         </DialogContent>

@@ -40,7 +40,7 @@ export const formatJSON = function (val = {}, bigIntJSON) {
     return bigIntJSON.stringify(res, null, 2);
   } catch {
     const errorJson = {
-      error: `HERE ${val}`,
+      error: `错误：${val}`,
     };
     return bigIntJSON.stringify(errorJson, null, 2);
   }

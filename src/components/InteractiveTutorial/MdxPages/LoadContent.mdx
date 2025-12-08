@@ -1,13 +1,13 @@
-export const title = 'Load Content';
+export const title = '加载内容';
 
-# Load Data into a Collection from a Remote Snapshot
+# 从远程快照加载数据到集合
 
-In this tutorial, we will guide you through loading data into a Qdrant collection from a remote snapshot.
+在本教程中，我们将指导您如何从远程快照将数据加载到Qdrant集合中。
 
-## Step 1: Import a snapshot to a collection
+## 步骤1：将快照导入到集合
 
-To start, create the collection `midjourney` and load vector data into it.
-The collection will take on the parameters of the snapshot, with vector size of 512, and similarity measured using the Cosine distance.
+首先，创建集合`midjourney`并将向量数据加载到其中。
+该集合将采用快照的参数，向量大小为512，相似度使用余弦距离进行测量。
 
 ```json withRunButton=true
 PUT /collections/midjourney/snapshots/recover
@@ -16,19 +16,19 @@ PUT /collections/midjourney/snapshots/recover
 }
 ```
 
-Wait a few moments while the vectors from the snapshot are added to the `midjourney` collection.
+等待片刻，快照中的向量将被添加到`midjourney`集合中。
 
-## Step 2: Verify the data upload
+## 步骤2：验证数据上传
 
-After the data has been imported, it's important to verify that it has been successfully uploaded. You can do this by checking the number of vectors (or points) in the collection.
+数据导入后，验证其是否成功上传非常重要。您可以通过检查集合中的向量（或点）数量来实现这一点。
 
-Run the following request to get the vector count:
+运行以下请求以获取向量计数：
 
 ```json withRunButton=true
 POST /collections/midjourney/points/count
 ```
 
-The collection should contain 5,417 data points. 
+该集合应包含5,417个数据点。
 
-### Step 3: Open the collection UI
-You can also [inspect your collection](/dashboard#/collections/midjourney/) to review the uploaded data.
+### 步骤3：打开集合UI
+您还可以[检查您的集合](/dashboard#/collections/midjourney/)以查看上传的数据。

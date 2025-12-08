@@ -1,0 +1,67 @@
+{
+  "optionalProperties": {
+    "collection_name": { "type": "string" },
+    "dense_vectors": {
+      "elements": {
+        "properties": {
+          "name": { "type": "string" },
+          "size": { "type": "uint32" },
+          "distance": { "enum": ["Cosine", "Euclid", "Dot", "Manhattan"] },
+          "multivector": { "type": "boolean" },
+          "storage_tier": { "enum": ["storage", "balanced", "performance"] },
+          "precision_tier": { "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "payload_indexes": {
+      "elements": {
+        "properties": {
+          "name": { "type": "string" },
+          "type": {
+            "enum": [
+              "keyword",
+              "integer",
+              "float",
+              "uuid",
+              "datetime",
+              "text",
+              "geo",
+              "bool"
+            ]
+          }
+        },
+        "optionalProperties": {
+          "params": {
+            "optionalProperties": {
+              "lowercase": { "type": "boolean" },
+              "tokenizer": {
+                "enum": ["prefix", "whitespace", "word", "multilingual"]
+              },
+              "min_token_length": { "type": "uint32" },
+              "max_token_length": { "type": "uint32" },
+              "range": { "type": "boolean" },
+              "lookup": { "type": "boolean" },
+              "phrase_matching": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },  
+    "tenant_field": {
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "enum": ["keyword"] }
+      }
+    },
+    "sparse_vectors": {
+      "elements": {
+        "properties": {
+          "name": { "type": "string" },
+          "use_idf": { "type": "boolean" },
+          "storage_tier": { "enum": ["storage", "balanced", "performance"] },
+          "precision_tier": { "enum": ["low", "medium", "high"] }
+        }
+      }
+    }
+  }
+}

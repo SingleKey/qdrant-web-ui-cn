@@ -19,7 +19,7 @@ function InputWithIcon({ value, setValue, actions }) {
         fullWidth
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Search Collection"
+        placeholder="搜索集合"
         startAdornment={
           <InputAdornment position="start">
             <Search size={20} color={theme.palette.text.primary} />

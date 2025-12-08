@@ -74,7 +74,7 @@ export const SnapshotsTab = ({ collectionName }) => {
   const downloadSnapshot = (snapshotName, snapshotSize, progress, setProgress) => {
     if (progress > 0) {
       enqueueSnackbar(
-        'Please wait until the previous download is finished',
+        '请等待上一个下载完成',
         getSnackbarOptions('warning', closeSnackbar, 2000)
       );
       return;
@@ -104,7 +104,7 @@ export const SnapshotsTab = ({ collectionName }) => {
       })
       .catch((error) => {
         if (error.name === 'AbortError') {
-          enqueueSnackbar('Download canceled', getSnackbarOptions('warning', closeSnackbar, 2000));
+          enqueueSnackbar('下载已取消', getSnackbarOptions('warning', closeSnackbar, 2000));
           return;
         }
         enqueueSnackbar(error.message, errorSnackbarOptions);
@@ -117,7 +117,7 @@ export const SnapshotsTab = ({ collectionName }) => {
       .deleteSnapshot(collectionName, snapshotName)
       .then(() => {
         setSnapshots([...snapshots.filter((snapshot) => snapshot.name !== snapshotName)]);
-        enqueueSnackbar('Snapshot successfully deleted', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('快照已成功删除', getSnackbarOptions('success', closeSnackbar, 2000));
       })
       .catch((err) => {
         enqueueSnackbar(err.message, errorSnackbarOptions);
@@ -146,7 +146,7 @@ export const SnapshotsTab = ({ collectionName }) => {
           }}
         >
           <Typography variant="h4" component={'h1'}>
-            Snapshots
+            快照
           </Typography>
         </Grid>
         <Grid
@@ -162,18 +162,18 @@ export const SnapshotsTab = ({ collectionName }) => {
             startIcon={<Camera size={18} />}
             disabled={isSnapshotLoading}
           >
-            Take snapshot
+            拍摄快照
           </Button>
         </Grid>
         {remoteShards && remoteShards.length !== 0 && (
           <InfoBanner severity={'warning'}>
             <Typography>
-              Snapshot will not contain the full collection. It will only include shards on the current machine.
+              快照将不包含完整的集合，它将只包含当前机器上的分片。
             </Typography>
 
             {localShards.length > 0 && (
               <>
-                <Typography>Local shards:</Typography>
+                <Typography>本地分片：</Typography>
                 <ul>
                   {localShards.map((shard) => (
                     <Typography component={'li'} key={shard.shard_id}>
@@ -184,7 +184,7 @@ export const SnapshotsTab = ({ collectionName }) => {
               </>
             )}
             <>
-              <Typography>Remote shards (not included in the snapshot):</Typography>
+              <Typography>远程分片（不包含在快照中）：</Typography>
               <ul>
                 {remoteShards.map((shard) => (
                   <Typography component={'li'} key={shard.shard_id}>
@@ -194,25 +194,25 @@ export const SnapshotsTab = ({ collectionName }) => {
               </ul>
             </>
             <Typography>
-              For more information, please visit the{' '}
+              了解更多信息，请访问
               <Link href={'https://qdrant.tech/documentation/tutorials/create-snapshot/'} target="_blank">
-                documentation
+                文档
               </Link>
               .
             </Typography>
           </InfoBanner>
         )}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div>加载中...</div>}
         {(snapshots?.length > 0 || isSnapshotLoading) && (
           <Grid size={12}>
             <StyledTableContainer>
               <Table aria-label="simple table">
                 <StyledTableHead>
                   <TableRow>
-                    <StyledHeaderCell>Snapshot Name</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Created at</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Size</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Actions</StyledHeaderCell>
+                    <StyledHeaderCell>快照名称</StyledHeaderCell>
+                    <StyledHeaderCell align="center">创建时间</StyledHeaderCell>
+                    <StyledHeaderCell align="center">大小</StyledHeaderCell>
+                    <StyledHeaderCell align="center">操作</StyledHeaderCell>
                   </TableRow>
                 </StyledTableHead>
                 <StyledTableBody>
@@ -221,7 +221,7 @@ export const SnapshotsTab = ({ collectionName }) => {
                   {isSnapshotLoading && (
                     <StyledTableRow>
                       <TableCell colSpan={4} align="center">
-                        Loading...
+                        加载中...
                       </TableCell>
                     </StyledTableRow>
                   )}
@@ -232,7 +232,7 @@ export const SnapshotsTab = ({ collectionName }) => {
         )}
         {!isLoading && !snapshots?.length && !isSnapshotLoading && (
           <Grid textAlign={'center'} size={12}>
-            <Typography>No snapshots yet, take one! 📸</Typography>
+            <Typography>暂无快照，立即拍摄！ 📸</Typography>
           </Grid>
         )}
       </Grid>

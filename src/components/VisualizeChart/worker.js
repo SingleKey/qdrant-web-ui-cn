@@ -36,7 +36,7 @@ self.onmessage = function (e) {
   if (!points || points.length === 0) {
     self.postMessage({
       data: [],
-      error: 'No data found',
+      error: '未找到数据',
     });
     return;
   }
@@ -44,7 +44,7 @@ self.onmessage = function (e) {
   if (points.length === 1) {
     self.postMessage({
       data: [],
-      error: `cannot perform ${params.algorithm || DEFAULT_ALGORITHM} on single point`,
+      error: `无法对单个向量点执行 ${params.algorithm || DEFAULT_ALGORITHM} 算法`,
     });
     return;
   }
@@ -72,14 +72,14 @@ self.onmessage = function (e) {
     if (vectorType === 'named') {
       self.postMessage({
         data: [],
-        error: 'Please select a valid vector name (by `using`), default vector is not defined',
+        error: '请通过 `using` 参数选择一个有效的向量名称，默认向量未定义',
       });
       return;
     }
 
     self.postMessage({
       data: [],
-      error: 'Vector visualization is not supported for vector type: ' + vectorType,
+      error: '不支持 "' + vectorType + '" 类型向量的可视化',
     });
     return;
   }

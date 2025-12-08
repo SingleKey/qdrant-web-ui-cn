@@ -6,53 +6,53 @@ import { Filter, SlidersHorizontal, ScanText, VectorSquare, Grip, SearchCode, Ne
 
 const TUTORIAL_SECTIONS = {
   vectorSearch: {
-    title: 'Vector Search',
+    title: '向量搜索',
     tutorials: [
       {
         icon: Filter,
-        title: 'Filtering - Beginner',
-        description: 'Filter search results using basic payload conditions.',
+        title: '过滤 - 入门',
+        description: '使用基本的负载条件过滤搜索结果。',
         href: '/tutorial/filteringbeginner',
       },
       {
         icon: SlidersHorizontal,
-        title: 'Filtering - Advanced',
-        description: 'Try advanced filtering based on nested payload conditions.',
+        title: '过滤 - 高级',
+        description: '尝试基于嵌套负载条件的高级过滤。',
         href: '/tutorial/filteringadvanced',
       },
       {
         icon: ScanText,
-        title: 'Filtering - Full Text',
-        description: 'Search for substrings, tokens, or phrases within text fields.',
+        title: '过滤 - 全文',
+        description: '在文本字段中搜索子字符串、令牌或短语。',
         href: '/tutorial/filteringfulltext',
       },
       {
         icon: VectorSquare,
-        title: 'Multivector Search',
-        description: 'Work with data represented by ColBERT multivectors.',
+        title: '多向量搜索',
+        description: '处理由 ColBERT 多向量表示的数据。',
         href: '/tutorial/multivectors',
       },
       {
         icon: Grip,
-        title: 'Sparse Vector Search',
-        description: 'Use sparse vectors to get specific search results.',
+        title: '稀疏向量搜索',
+        description: '使用稀疏向量获取特定的搜索结果。',
         href: '/tutorial/sparsevectors',
       },
       {
         icon: SearchCode,
-        title: 'Hybrid Search',
-        description: 'Combine dense and sparse vectors for more accurate search results.',
+        title: '混合搜索',
+        description: '结合密集和稀疏向量以获得更准确的搜索结果。',
         href: '/tutorial/hybridsearch',
       },
     ],
   },
   multitenancy: {
-    title: 'Setup Guide',
+    title: '设置指南',
     tutorials: [
       {
         icon: Network,
-        title: 'Multitenancy',
-        description: 'Manage multiple users within a single collection.',
+        title: '多租户',
+        description: '在单个集合中管理多个用户。',
         href: '/tutorial/multitenancy',
       },
     ],

@@ -24,17 +24,17 @@ function JwtTokenViewer({ jwt, token, sx }) {
         codeStr={JSON.stringify(token, null, 2)}
         language={'json'}
         editable={false}
-        title={'JWT Token Payload'}
+        title={'JWT令牌负载'}
       />
 
-      <Tooltip title="Use this JWT token as an API key to get restricted access to the Qdrant API">
+      <Tooltip title="使用此JWT令牌作为API密钥以获取对Qdrant API的受限访问权限">
         <Box sx={{ display: 'flex', flexDirection: 'column' }} role="group">
           <InputLabel htmlFor="jwt-token-output" sx={{ pb: 0.625 }}>
-            JWT Token
+            JWT令牌
           </InputLabel>
           <OutlinedInput
             id="jwt-token-output"
-            placeholder="JWT Token"
+            placeholder="JWT令牌"
             variant="outlined"
             fullWidth
             value={isVisible ? jwt : '•'.repeat(jwt.length)}
@@ -42,7 +42,7 @@ function JwtTokenViewer({ jwt, token, sx }) {
             endAdornment={
               <InputAdornment position="end">
                 <IconButton onClick={handleVisibility}>{isVisible ? <VisibilityOff /> : <Visibility />}</IconButton>
-                <CopyButton text={jwt} tooltip={'Copy JWT to clipboard'} successMessage={'JWT copied to clipboard'} />
+                <CopyButton text={jwt} tooltip={'复制JWT到剪贴板'} successMessage={'JWT已复制到剪贴板'} />
               </InputAdornment>
             }
           />

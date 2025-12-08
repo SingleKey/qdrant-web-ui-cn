@@ -64,13 +64,13 @@ const Welcome = () => {
             mb: '1rem',
           }}
         >
-          Welcome to Qdrant!
+          欢迎使用 Qdrant！
         </Typography>
 
         <CardBanner
-          title="Get started with vector search in Qdrant"
-          description="Start building your app by creating a collection and inserting your vectors."
-          buttonText="View Quickstart"
+          title="开始使用 Qdrant 中的向量搜索"
+          description="通过创建集合并插入向量来开始构建您的应用。"
+          buttonText="查看快速开始"
           linkTo="/tutorial/quickstart"
           imgSrc={getFullPath('/assets/console.svg')}
         />
@@ -78,16 +78,16 @@ const Welcome = () => {
 
       <Box component="section">
         <Typography component="h2" variant="h6" mb="1rem">
-          Connect to your Project or Start with Samples
+          连接到您的项目或从示例开始
         </Typography>
 
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={Workflow}
-              title="API Reference"
+              title="API 参考"
               description={
-                "Explore Qdrant's REST API and SDKs to connect, query, and manage your vector data with ease."
+                "探索 Qdrant 的 REST API 和 SDK，轻松连接、查询和管理您的向量数据。"
               }
               href="https://api.qdrant.tech/"
               showCta={false}
@@ -96,8 +96,8 @@ const Welcome = () => {
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={FileCode}
-              title="Load Sample Data"
-              description={`Follow this tutorial to import a remote snapshot and explore vector search with real data in just a few steps.`}
+              title="加载示例数据"
+              description={`按照本教程导入远程快照，只需几步即可使用真实数据探索向量搜索。`}
               href="/datasets"
               showCta={false}
             />
@@ -107,7 +107,7 @@ const Welcome = () => {
 
       <Box component="section">
         <Typography component="h2" variant="h6" mb="1rem">
-          Interactive Tutorials
+          交互式教程
         </Typography>
         <TutorialLinks sections={['vectorSearch', 'multitenancy']} showTitle={false} />
       </Box>

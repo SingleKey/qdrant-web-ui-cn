@@ -7,13 +7,13 @@ import { Divider, Grid, IconButton, Typography } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 /**
- * A list of key-value pairs, where the value is either a string or an object.
- * if the value is an object, it will be rendered as a JSON tree.
- * @param {Object} data - key-value pairs to render
- * @param {Object} specialCases - key-value pairs to render, where the value is JSX element
- * @param {Function} onConditionChange - callback for changing conditions
- * @param {Array} conditions - current conditions
- * @return {unknown[]} - array of JSX elements
+ * 键值对列表，其中值可以是字符串或对象。
+ * 如果值是对象，它将被渲染为JSON树。
+ * @param {Object} data - 要渲染的键值对
+ * @param {Object} specialCases - 要渲染的键值对，其中值是JSX元素
+ * @param {Function} onConditionChange - 条件变化时的回调函数
+ * @param {Array} conditions - 当前条件
+ * @return {unknown[]} - JSX元素数组
  */
 export const DataGridList = function ({ data = {}, specialCases = {}, onConditionChange, conditions, payloadSchema }) {
   const theme = useTheme();
@@ -37,7 +37,7 @@ export const DataGridList = function ({ data = {}, specialCases = {}, onConditio
           </Grid>
 
           <Grid my={1} size={9}>
-            {/* special cases */}
+            {/* 特殊情况 */}
             {specialKeys?.includes(key) && specialCases[key]}
 
             <Typography

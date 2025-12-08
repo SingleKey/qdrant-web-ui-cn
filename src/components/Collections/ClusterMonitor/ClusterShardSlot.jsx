@@ -127,7 +127,7 @@ const Slot = ({
                   <>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.success.main, fontWeight: 'bold' }}>
-                      Drag to an empty slot to transfer
+                      拖动到空槽位进行转移
                     </Typography>
                   </>
                 )}
@@ -135,11 +135,11 @@ const Slot = ({
                   <>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.warning.main, fontWeight: 'bold' }}>
-                      Transferring to peer {transfer.transfer.to}
+                      转移到节点 {transfer.transfer.to}
                     </Typography>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.error.main, fontStyle: 'italic' }}>
-                      Cannot be dragged during transfer
+                      转移过程中无法拖动
                     </Typography>
                   </>
                 )}
@@ -151,8 +151,8 @@ const Slot = ({
                 <TooltipRow label="Slot Id" value={id} />
                 <br />
                 <Typography variant="caption" sx={{ color: '#fff', fontWeight: 'bold' }}>
-                  Drop here to move shard
-                </Typography>
+                      在此处放置以移动分片
+                    </Typography>
               </>
             ) : (
               <>
@@ -160,7 +160,7 @@ const Slot = ({
                 <br />
                 <TooltipRow label="Slot Id" value={id} />
                 <br />
-                <Typography variant="caption">Empty slot</Typography>
+                <Typography variant="caption">空槽位</Typography>
               </>
             )
           }
@@ -177,7 +177,7 @@ const Slot = ({
           >
             {shard && (
               <Typography variant="subtitle2" sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-                {`${!matches && peersNumber <= 12 ? 'Shard' : ''} ${shard.shard_id}`}
+                {`${!matches && peersNumber <= 12 ? '分片' : ''} ${shard.shard_id}`}
               </Typography>
             )}
             {shard?.shard_key && (

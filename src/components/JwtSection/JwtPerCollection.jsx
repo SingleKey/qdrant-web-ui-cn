@@ -81,17 +81,17 @@ CollectionAccessToggle.propTypes = {
 const JwtPerCollection = ({ globalAccess, manageAccess, collections, setConfiguredCollections }) => {
   return (
     <StyledTableContainer>
-      <Table aria-label="Access per Collection">
+      <Table aria-label="按集合访问">
         <StyledTableHead>
           <TableRow>
             <StyledHeaderCell width="33%" sx={{ py: 2 }}>
-              Collection Name
+              集合名称
             </StyledHeaderCell>
             <StyledHeaderCell width="33%" align="center" sx={{ py: 2 }}>
-              Read
+              读取
             </StyledHeaderCell>
             <StyledHeaderCell width="33%" align="center" sx={{ py: 2 }}>
-              Write
+              写入
             </StyledHeaderCell>
           </TableRow>
         </StyledTableHead>

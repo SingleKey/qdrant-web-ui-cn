@@ -15,25 +15,24 @@ import { useSnackbar } from 'notistack';
 
 const explanation = `
 
-// Parameters for expansion request:
+// 扩展请求参数：
 //
-// Available parameters:
+// 可用参数：
 //
-// - 'limit': number of records to use on each step.
-// - 'sample': bootstrap graph with sample data from collection.
+// - 'limit': 每步使用的记录数。
+// - 'sample': 使用集合中的样本数据引导图。
 //
-// - 'filter': filter expression to select vectors for visualization.
-//             See https://qdrant.tech/documentation/concepts/filtering/
+// - 'filter': 用于选择要可视化的向量的过滤表达式。
+//             参见 https://qdrant.tech/documentation/concepts/filtering/
 //
-// - 'using': specify which vector to use for visualization
-//                  if there are multiple.
+// - 'using': 如果有多个向量，指定要使用哪个向量进行可视化。
 //
-// - 'tree': if true, will use show spanning tree instead of full graph.
+// - 'tree': 如果为true，将显示生成树而不是完整图。
 
 `;
 
 const defaultJson = `
-// Try me!
+// 试试我！
 
 {
   "limit": 5
@@ -124,18 +123,18 @@ function Graph() {
   };
 
   const queryRequestSchema = (vectorNames) => ({
-    description: 'Filter request',
+    description: '过滤请求',
     type: 'object',
     properties: {
       limit: {
-        description: 'Page size. Default: 10',
+        description: '页面大小。默认值：10',
         type: 'integer',
         format: 'uint',
         minimum: 1,
         nullable: true,
       },
       filter: {
-        description: 'Look only for points which satisfies this conditions. If not provided - all points.',
+        description: '只查找满足此条件的点。如果未提供 - 所有点。',
         anyOf: [
           {
             $ref: '#/components/schemas/Filter',
@@ -146,17 +145,17 @@ function Graph() {
         ],
       },
       using: {
-        description: 'Vector field name',
+        description: '向量字段名称',
         type: 'string',
         enum: vectorNames,
       },
       sample: {
-        description: 'Bootstrap graph with sample data from collection',
+        description: '使用集合中的样本数据引导图',
         type: 'integer',
         nullable: true,
       },
       tree: {
-        description: 'Show spanning tree instead of full graph',
+        description: '显示生成树而不是完整图',
         type: 'boolean',
         nullable: true,
       },
@@ -187,7 +186,7 @@ function Graph() {
                         borderRadius: 0,
                       }}
                     >
-                      <Tooltip title={'Back to collection'}>
+                      <Tooltip title={'返回集合'}>
                         <IconButton
                           sx={{ mr: 3 }}
                           size="small"
@@ -237,9 +236,9 @@ function Graph() {
                       backgroundColor: theme.palette.background.paper,
                     }}
                   >
-                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="graph visualization tabs">
-                      <Tab label="Code" />
-                      <Tab label="Data Panel" />
+                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="图可视化标签">
+                      <Tab label="代码" />
+                      <Tab label="数据面板" />
                     </Tabs>
                   </Box>
                   <TabPanel value={tabValue} index={0} style={{ flex: 1, overflow: 'hidden' }}>

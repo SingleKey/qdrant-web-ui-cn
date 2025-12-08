@@ -27,13 +27,13 @@ export function ExternalInfoProvider({ children }) {
       const response = await fetch(externalInfoPath);
 
       if (!response.ok) {
-        throw new Error(`Failed to load external info: ${response.status}`);
+        throw new Error(`加载外部信息失败: ${response.status}`);
       }
 
       const data = await response.json();
       setExternalInfo(data);
     } catch (err) {
-      console.error('Error fetching external info:', err);
+      console.error('获取外部信息时出错:', err);
       setError(err);
       setExternalInfo(null);
     } finally {
@@ -68,7 +68,7 @@ export function useExternalInfo() {
   const context = useContext(ExternalInfoContext);
 
   if (context === undefined) {
-    throw new Error('useExternalInfo must be used within an ExternalInfoProvider');
+    throw new Error('useExternalInfo 必须在 ExternalInfoProvider 内使用');
   }
 
   return context;

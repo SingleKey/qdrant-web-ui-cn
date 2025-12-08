@@ -23,7 +23,7 @@ const ClusterInfo = ({ collectionCluster = { result: {} }, ...other }) => {
   return (
     <Card elevation={0} {...other}>
       <CardHeader
-        title={'Collection Cluster Info'}
+        title={'集合集群信息'}
         variant="heading"
         sx={{
           flexGrow: 1,

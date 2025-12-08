@@ -60,7 +60,7 @@ export function useCloudInfo() {
   const context = useContext(CloudInfoContext);
 
   if (context === undefined) {
-    throw new Error('useCloudInfo must be used within a CloudInfoProvider');
+    throw new Error('useCloudInfo 必须在 CloudInfoProvider 内使用');
   }
 
   return context;

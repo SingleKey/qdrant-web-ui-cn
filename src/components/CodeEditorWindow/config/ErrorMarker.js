@@ -33,7 +33,7 @@ export function errChecker(code) {
         endLineNumber: blocksArray[i].blockStartLine,
         startColumn: 0,
         endColumn: headLineArray[0].length,
-        message: 'Expected one of GET/POST/PUT/DELETE/HEAD',
+        message: '必须是 GET/POST/PUT/DELETE/HEAD 中的一种方法',
         severity: 'monaco.MarkerSeverity.Error',
       });
     }

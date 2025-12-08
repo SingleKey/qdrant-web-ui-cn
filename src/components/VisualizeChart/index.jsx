@@ -30,7 +30,7 @@ function intoDatasets(
     // No grouping
     return [
       {
-        label: 'Data',
+        label: '数据',
         data,
         offsets: Array.from({ length: data.length }, (_, i) => i),
         pointBackgroundColor: [...colors],
@@ -47,8 +47,8 @@ function intoDatasets(
     let group = get(point.payload, groupBy) + ''; // Convert to string, even if it's an o
 
     if (!group) {
-      // If specified field is not present in the payload, fallback to 'Unknown'
-      group = 'Unknown';
+      // 如果payload中没有指定的字段，则回退到'未知'
+      group = '未知';
     }
 
     if (!groups[group]) {
@@ -225,7 +225,7 @@ const VisualizeChart = ({
 
     worker.onmessage = (m) => {
       if (m.data.error) {
-        enqueueSnackbar(`Visualization Unsuccessful, error: ${m.data.error}`, {
+        enqueueSnackbar(`可视化失败，错误：${m.data.error}`, {
           variant: 'error',
         });
       } else if (m.data.result && m.data.result.length > 0) {
@@ -239,7 +239,7 @@ const VisualizeChart = ({
 
         myChart.update();
       } else {
-        enqueueSnackbar(`Visualization Unsuccessful, error: Unexpected Error Occured`, { variant: 'error' });
+        enqueueSnackbar(`可视化失败，错误：发生意外错误`, { variant: 'error' });
       }
     };
 

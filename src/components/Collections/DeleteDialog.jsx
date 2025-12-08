@@ -33,14 +33,14 @@ export default function DeleteDialog({ open, setOpen, collectionName, getCollect
       <ConfirmationDialog
         open={open}
         onClose={handleClose}
-        title={'Do you want to delete ' + collectionName + '?'}
+        title={'您确定要删除 ' + collectionName + ' 吗？'}
         warning={
-          'Deleting a collection cannot be undone. ' +
-          'Make sure you have backed up all important data before proceeding.'
+          '删除集合的操作无法撤销。' +
+          '请确保在继续操作前已备份所有重要数据。'
         }
-        actionName={'Delete'}
+        actionName={'删除'}
         actionHandler={callDelete}
-        aria-label="Delete Collection Confirmation Dialog"
+        aria-label="删除集合确认对话框"
       />
     </>
   );

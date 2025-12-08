@@ -28,7 +28,7 @@ export function TelemetryProvider({ children }) {
         if (error.status === 403 || error.status === 401) {
           setAuthError(error);
         } else {
-          console.log('error fetching telemetry', error);
+          console.log('获取遥测数据时出错', error);
         }
       }
     }
@@ -60,7 +60,7 @@ TelemetryProvider.propTypes = {
 export function useVersion() {
   const context = useContext(TelemetryContext);
   if (context === undefined) {
-    throw new Error('useVersion must be used within a TelemetryProvider');
+    throw new Error('useVersion 必须在 TelemetryProvider 内使用');
   }
   return { version: context.version };
 }
@@ -68,7 +68,7 @@ export function useVersion() {
 export function useMaxCollections() {
   const context = useContext(TelemetryContext);
   if (context === undefined) {
-    throw new Error('useMaxCollections must be used within a TelemetryProvider');
+    throw new Error('useMaxCollections 必须在 TelemetryProvider 内使用');
   }
   return { maxCollections: context.maxCollections, setMaxCollections: context.setMaxCollections };
 }
@@ -76,7 +76,7 @@ export function useMaxCollections() {
 export function useJwt() {
   const context = useContext(TelemetryContext);
   if (context === undefined) {
-    throw new Error('useJwt must be used within a TelemetryProvider');
+    throw new Error('useJwt 必须在 TelemetryProvider 内使用');
   }
   return { jwtEnabled: context.jwtEnabled, jwtVisible: context.jwtVisible };
 }
@@ -84,7 +84,7 @@ export function useJwt() {
 export function useAuthError() {
   const context = useContext(TelemetryContext);
   if (context === undefined) {
-    throw new Error('useAuthError must be used within a TelemetryProvider');
+    throw new Error('useAuthError 必须在 TelemetryProvider 内使用');
   }
   return { authError: context.authError, clearAuthError: context.clearAuthError };
 }
@@ -92,7 +92,7 @@ export function useAuthError() {
 export function useTelemetry() {
   const context = useContext(TelemetryContext);
   if (context === undefined) {
-    throw new Error('useTelemetry must be used within a TelemetryProvider');
+    throw new Error('useTelemetry 必须在 TelemetryProvider 内使用');
   }
   return context;
 }

@@ -12,12 +12,12 @@ const ClusterShardRow = ({ shard, clusterPeerId }) => {
       </TableCell>
       <TableCell>
         <Typography variant="subtitle1" component={'span'} color="text.secondary">
-          {shard.peer_id ? `Remote (${shard.peer_id})` : `Local (${clusterPeerId ?? 'unknown'})`}
+          {shard.peer_id ? `远程 (${shard.peer_id})` : `本地 (${clusterPeerId ?? '未知'})`}
         </Typography>
       </TableCell>
       <TableCell>
         <Typography variant="subtitle1" component={'span'} color="text.secondary">
-          {shard.state}
+          {shard.state === 'Active' ? '活跃' : shard.state}
         </Typography>
       </TableCell>
     </TableRow>

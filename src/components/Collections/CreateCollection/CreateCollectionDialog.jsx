@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { CreateCollectionForm } from 'create-collection-form';
+import { CreateCollectionForm } from '../../CreateCollectionForm';
 import { AppBar, Dialog, Toolbar, Typography, IconButton } from '@mui/material';
 import { ArrowLeft } from 'lucide-react';
 import { useTheme } from '@mui/material/styles';
@@ -73,7 +73,7 @@ const CreateCollectionDialog = ({ open, handleClose }) => {
             variant="body1"
             component="div"
           >
-            Create New Collection
+            创建新集合
           </Typography>
         </Toolbar>
       </AppBar>

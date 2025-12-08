@@ -40,14 +40,14 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
 
   const renderVectorChips = (vectorName, vectorConfig) => {
     const chips = [
-      <StyledChip key="name" label={vectorName || 'Default'} title={'Vector Name'} />,
-      <StyledChip key="size" label={vectorConfig.size} title={'Size'} />,
-      <StyledChip key="distance" label={vectorConfig.distance} title={'Distance'} />,
+      <StyledChip key="name" label={vectorName || '默认'} title={'向量名称'} />,
+      <StyledChip key="size" label={vectorConfig.size} title={'大小'} />,
+      <StyledChip key="distance" label={vectorConfig.distance} title={'距离'} />,
     ];
 
     // Add model chip if present
     if (vectorConfig.model) {
-      chips.push(<StyledChip key="model" label={vectorConfig.model} title={'Model'} />);
+      chips.push(<StyledChip key="model" label={vectorConfig.model} title={'模型'} />);
     }
 
     return chips;
@@ -55,8 +55,8 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
 
   const renderSparseVectorChips = (vectorName) => {
     return [
-      <StyledChip key="name" label={vectorName} title={'Vector Name'} />,
-      <StyledChip key="type" label="Sparse" title={'Type'} />,
+      <StyledChip key="name" label={vectorName} title={'向量名称'} />,
+      <StyledChip key="type" label="稀疏" title={'类型'} />,
     ];
   };
 
@@ -104,7 +104,7 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
               <Ellipsis size={18} />
             </Box>
           }
-          title={'See all in Info section'}
+          title={'在信息部分查看全部'}
           component={Link}
           onClick={handleEllipsisClick}
           sx={{

@@ -47,7 +47,7 @@ const CommandsDrawer = ({ open, toggleDrawer, handleInsertCommand }) => {
         setCommands(nextCommands);
       })
       .catch((e) => {
-        enqueueSnackbar('Error fetching commands', errorSnackbarOptions);
+        enqueueSnackbar('获取命令失败', errorSnackbarOptions);
         console.error(e);
       });
   }, []);
@@ -70,14 +70,14 @@ const CommandsDrawer = ({ open, toggleDrawer, handleInsertCommand }) => {
     >
       <div>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, mr: 2 }}>
-          <Typography variant={'h5'}>Commands</Typography>
+          <Typography variant={'h5'}>命令</Typography>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton onClick={toggleDrawer}>
             <Close />
           </IconButton>
         </Box>
         <Typography variant={'body1'} mb={4}>
-          This is a list of commands that can be used in the editor.
+          这是可在编辑器中使用的命令列表。
         </Typography>
         <CommandSearch commands={allCommands} setCommands={setCommands} />
         <CommandsTable commands={commands} handleInsertCommand={handleInsertCommand} />

@@ -161,13 +161,13 @@ const PointsTabs = ({ collectionName, client }) => {
         </Grid>
       )}
       {!points && !errorMessage && (
-        <Grid textAlign={'center'} size={12} role="progressbar" aria-label="Loading Points">
-          <Typography> 🔃 Loading...</Typography>
+        <Grid textAlign={'center'} size={12} role="progressbar" aria-label="加载点数据">
+          <Typography> 🔃 加载中...</Typography>
         </Grid>
       )}
       {points && !errorMessage && points.points?.length === 0 && (
-        <Grid textAlign={'center'} size={12} role="alert" aria-label="No Points">
-          <Typography>📪 No Points are present, {collectionName} is empty</Typography>
+        <Grid textAlign={'center'} size={12} role="alert" aria-label="无点数据">
+          <Typography>📪 没有点数据，{collectionName} 为空</Typography>
         </Grid>
       )}
       {points &&
@@ -193,7 +193,7 @@ const PointsTabs = ({ collectionName, client }) => {
             setOffset(nextPageOffset);
           }}
         >
-          Load More
+          加载更多
         </Button>
       </Grid>
     </Grid>

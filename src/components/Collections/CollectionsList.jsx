@@ -27,7 +27,7 @@ const CollectionTableRow = ({ collection, getCollectionsCall }) => {
           {collection.name}
         </Typography>
         <Typography component={'p'} variant="caption" color="text.secondary">
-          {collection.aliases && collection.aliases.length > 0 && `Aliases: ${collection.aliases.join(', ')}`}
+          {collection.aliases && collection.aliases.length > 0 && `别名: ${collection.aliases.join(', ')}`}
         </Typography>
       </TableCell>
       <TableCell>
@@ -50,16 +50,16 @@ const CollectionTableRow = ({ collection, getCollectionsCall }) => {
       <TableCell align="right">
         <ActionsMenu>
           <MenuItem component={Link} to={`/collections/${collection.name}#snapshots`}>
-            Take Snapshot
+            拍摄快照
           </MenuItem>
           <MenuItem component={Link} to={`/collections/${collection.name}/visualize`}>
-            Visualize
+            可视化
           </MenuItem>
           <MenuItem component={Link} to={`/collections/${collection.name}/graph`}>
-            Graph
+            图谱
           </MenuItem>
           <MenuItem onClick={() => setOpenDeleteDialog(true)} sx={{ color: theme.palette.error.main }}>
-            Delete
+            删除
           </MenuItem>
         </ActionsMenu>
         <DeleteDialog
@@ -84,16 +84,16 @@ const CollectionsList = ({ collections, getCollectionsCall }) => {
       <Table aria-label="simple table">
         <StyledTableHead>
           <TableRow>
-            <StyledHeaderCell width="25%">Name</StyledHeaderCell>
-            <StyledHeaderCell width="12%">Status</StyledHeaderCell>
-            <StyledHeaderCell align="center">Points (Approx)</StyledHeaderCell>
-            <StyledHeaderCell align="center">Segments</StyledHeaderCell>
-            <StyledHeaderCell align="center">Shards</StyledHeaderCell>
+            <StyledHeaderCell width="25%">名称</StyledHeaderCell>
+            <StyledHeaderCell width="12%">状态</StyledHeaderCell>
+            <StyledHeaderCell align="center">点数量 (大约)</StyledHeaderCell>
+            <StyledHeaderCell align="center">分段</StyledHeaderCell>
+            <StyledHeaderCell align="center">分片</StyledHeaderCell>
             <StyledHeaderCell width="20%" align="center">
-              Vectors Config
+              向量配置
             </StyledHeaderCell>
             <StyledHeaderCell width="7%" align="right">
-              Actions
+              操作
             </StyledHeaderCell>
           </TableRow>
         </StyledTableHead>

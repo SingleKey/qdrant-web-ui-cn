@@ -15,33 +15,32 @@ import { useSnackbar } from 'notistack';
 
 const query = `
 
-// Try me!
+// 试试看！
 
 {
   "limit": 500
 }
 
-// Specify request parameters to select data for visualization.
+// 指定请求参数以选择要可视化的数据。
 //
-// Available parameters:
+// 可用参数：
 //
-// - 'limit': maximum number of vectors to visualize.
-//            *Warning*: large values may cause browser to freeze.
+// - 'limit': 要可视化的向量的最大数量。
+//            *警告*: 较大的值可能导致浏览器冻结。
 //
-// - 'filter': filter expression to select vectors for visualization.
-//             See https://qdrant.tech/documentation/concepts/filtering/
+// - 'filter': 用于选择要可视化的向量的过滤表达式。
+//             请参阅 https://qdrant.tech/documentation/concepts/filtering/
 //
-// - 'color_by': specify score or payload field to use for coloring points.
-//               How to use:
+// - 'color_by': 指定用于为点着色的分数或负载字段。
+//               使用方法：
 //
 //                "color_by": {
 //                  "payload": "field_name"
 //                }
 //
-// - 'using': specify which vector to use for visualization
-//                  if there are multiple.
+// - 'using': 如果有多个向量，指定要用于可视化的向量。
 //
-// - 'algorithm': specify algorithm to use for visualization. Available options: 'TSNE', 'UMAP', 'PCA'.
+// - 'algorithm': 指定用于可视化的算法。可用选项: 'TSNE', 'UMAP', 'PCA'.
 
 
 `;
@@ -91,18 +90,18 @@ function Visualize() {
   };
 
   const filterRequestSchema = (vectorNames) => ({
-    description: 'Filter request',
+    description: '过滤请求',
     type: 'object',
     properties: {
       limit: {
-        description: 'Page size. Default: 10',
+        description: '页面大小。默认值：10',
         type: 'integer',
         format: 'uint',
         minimum: 1,
         nullable: true,
       },
       filter: {
-        description: 'Look only for points which satisfies this conditions. If not provided - all points.',
+        description: '只查找满足此条件的点。如果未提供 - 所有点。',
         anyOf: [
           {
             $ref: '#/components/schemas/Filter',
@@ -113,28 +112,28 @@ function Visualize() {
         ],
       },
       using: {
-        description: 'Specify which vector to use for visualization',
+        description: '指定要用于可视化的向量',
         type: 'string',
         enum: vectorNames,
       },
       color_by: {
-        description: 'Color points by this field',
+        description: '按此字段为点着色',
         anyOf: [
           {
-            type: 'string', // Name of the field to use for coloring
+            type: 'string', // 用于着色的字段名称
           },
           {
-            description: 'field name',
+            description: '字段名称',
             type: 'object',
             properties: {
               payload: {
-                description: 'Name of the field to use for coloring',
+                description: '用于着色的字段名称',
                 type: 'string',
               },
             },
           },
           {
-            description: 'query',
+            description: '查询',
             type: 'object',
             properties: {
               query: {
@@ -148,7 +147,7 @@ function Visualize() {
         ],
       },
       algorithm: {
-        description: 'Algorithm to use for visualization',
+        description: '用于可视化的算法',
         type: 'string',
         enum: ['TSNE', 'UMAP', 'PCA'],
         default: 'TSNE',
@@ -181,7 +180,7 @@ function Visualize() {
                         borderBottom: `1px solid ${theme.palette.divider}`,
                       }}
                     >
-                      <Tooltip title={'Back to collection'}>
+                      <Tooltip title={'返回集合'}>
                         <IconButton
                           sx={{ mr: 3 }}
                           size="small"
@@ -229,9 +228,9 @@ function Visualize() {
                       backgroundColor: theme.palette.background.paper,
                     }}
                   >
-                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="visualization tabs">
-                      <Tab label="Code" />
-                      <Tab label="Data Panel" />
+                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="可视化标签页">
+                      <Tab label="代码" />
+                      <Tab label="数据面板" />
                     </Tabs>
                   </Box>
                   <TabPanel value={tabValue} index={0} style={{ flex: 1, overflow: 'hidden' }}>

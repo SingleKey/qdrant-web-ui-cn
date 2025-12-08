@@ -51,12 +51,12 @@ const VectorTableRow = ({ vectorObj, name, onCheckIndexQuality, precision, isInP
             <Button
               variant="contained"
               size="small"
-              aria-label="Check index quality"
+              aria-label="检查索引质量"
               data-testid="index-quality-check-button"
               onClick={onCheckIndexQuality}
               startIcon={<SearchCheck size={18} />}
             >
-              Check&nbsp;Index&nbsp;Quality
+              检查索引质量
             </Button>
           </Box>
         )}
@@ -165,7 +165,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   });
 
   if (!vectors) {
-    return <>No vectors</>;
+    return <>没有向量</>;
   }
 
   const onCheckIndexQuality = async ({ using = '', limit = 10, params = null, filter = null, timeout }) => {
@@ -239,7 +239,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   return (
     <Card elevation={0} data-testid="vectors-info" {...other}>
       <CardHeader
-        title="Search Quality"
+        title="搜索质量"
         variant="heading"
         sx={{
           flexGrow: 1,
@@ -251,7 +251,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
               control={<Switch checked={advancedMod} onChange={() => setAdvancedMod(!advancedMod)} size="medium" />}
               label={
                 <Typography component={'span'} variant={'body1'}>
-                  Advanced Mode
+                  高级模式
                 </Typography>
               }
             />
@@ -271,22 +271,22 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
             >
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Vector Name
+                  向量名称
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Size
+                  大小
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Distance
+                  距离
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Precision
+                  精度
                 </Typography>
               </TableCell>
             </TableRow>

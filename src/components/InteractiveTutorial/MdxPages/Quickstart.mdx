@@ -1,16 +1,16 @@
-export const title = 'Quickstart';
+export const title = '快速入门';
 
-# Quickstart: Vector Search for Beginners
+# 快速入门：面向初学者的向量搜索
 
-Qdrant is designed to find the approximate nearest data points in your dataset. In this quickstart guide, you'll create a simple database to track space colonies and perform a search for the nearest colony based on its vector representation.
+Qdrant旨在查找数据集中近似最近的数据点。在本快速入门指南中，您将创建一个简单的数据库来跟踪太空殖民地，并根据其向量表示执行最近殖民地的搜索。
 
-<Alert severity="info">Click **RUN** to send the API request. The response will appear on the right.<br/>You can also edit any code block and rerun the request to see different results.</Alert>
+<Alert severity="info">点击**运行**发送API请求。响应将出现在右侧。<br/>您还可以编辑任何代码块并重新运行请求以查看不同的结果。</Alert>
 
-## Step 1: Create a collection
+## 步骤1：创建集合
 
-First, we’ll create a collection called `star_charts` to store the colony data. Each location will be represented by a vector of four dimensions, and we'll use the Dot product as the distance metric for similarity search.
+首先，我们将创建一个名为`star_charts`的集合来存储殖民地数据。每个位置将由一个四维向量表示，我们将使用点积作为相似性搜索的距离度量。
 
-Run this command to create the collection:
+运行此命令以创建集合：
 
 ```json withRunButton=true
 PUT collections/star_charts
@@ -22,11 +22,11 @@ PUT collections/star_charts
 }
 ```
 
-## Step 2: Load data into the collection
+## 步骤2：将数据加载到集合中
 
-Now that the collection is set up, let’s add some data. Each location will have a vector and additional information (payload), such as its name.
+现在集合已设置完毕，让我们添加一些数据。每个位置将有一个向量和附加信息（负载），例如其名称。
 
-Run this request to add the data:
+运行此请求以添加数据：
 
 ```json withRunButton=true
 PUT collections/star_charts/points
@@ -71,11 +71,11 @@ PUT collections/star_charts/points
 }
 ```
 
-## Step 3: Run a search query
+## 步骤3：运行搜索查询
 
-Now, let’s search for the three nearest colonies to a specific vector representing a spatial location. This query will return the colonies along with their payload information.
+现在，让我们搜索与表示空间位置的特定向量最接近的三个殖民地。此查询将返回殖民地及其负载信息。
 
-Run the query below to find the nearest colonies:
+运行以下查询以查找最近的殖民地：
 
 ```json withRunButton=true
 POST collections/star_charts/points/search
@@ -86,11 +86,11 @@ POST collections/star_charts/points/search
 }
 ```
 
-## Conclusion
+## 结论
 
-Congratulations! 🎉 You’ve just completed a vector search across galactic coordinates! You've successfully added spatial data into a collection and performed searches to find the nearest locations based on their vector representation.
+恭喜！🎉 您刚刚完成了跨银河坐标的向量搜索！您已成功将空间数据添加到集合中，并基于向量表示执行搜索以查找最近的位置。
 
-## Next steps
+## 下一步
 
-In the next section, you’ll explore creating complex filter conditions to refine your searches further for interstellar exploration!
+在下一节中，您将探索创建复杂的过滤条件，以进一步优化星际探索的搜索！
 

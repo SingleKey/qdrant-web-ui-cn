@@ -68,15 +68,15 @@ function Datasets() {
 
   const importDataset = async (fileName, collectionName, setImporting, importing) => {
     if (isAccessDenied) {
-      enqueueSnackbar('Access denied: You do not have permission to import datasets', errorSnackbarOptions);
+      enqueueSnackbar('访问被拒绝：您没有权限导入数据集', errorSnackbarOptions);
       return;
     }
 
     if (importing) {
-      enqueueSnackbar('Importing in progress', errorSnackbarOptions);
+      enqueueSnackbar('导入进行中', errorSnackbarOptions);
       return;
     } else if (!collectionName) {
-      enqueueSnackbar('Collection name is required', errorSnackbarOptions);
+      enqueueSnackbar('需要集合名称', errorSnackbarOptions);
       return;
     } else {
       setImporting(true);
@@ -85,7 +85,7 @@ function Datasets() {
         await qdrantClient.recoverSnapshot(collectionName, {
           location: `https://snapshots.qdrant.io/${fileName}`,
         });
-        enqueueSnackbar('Snapshot successfully imported', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('快照成功导入', getSnackbarOptions('success', closeSnackbar, 2000));
       } catch (e) {
         enqueueSnackbar(e.message, errorSnackbarOptions);
       } finally {
@@ -103,23 +103,23 @@ function Datasets() {
       <CenteredFrame>
         <Grid container maxWidth={'xl'} width={'100%'} spacing={3}>
           <Grid size={12}>
-            <Typography variant="h4">Datasets</Typography>
+            <Typography variant="h4">数据集</Typography>
           </Grid>
           {isAccessDenied && (
             <Grid size={12}>
               <Alert severity="warning">
-                You do not have permission to import datasets. Please contact your administrator.
+                您没有权限导入数据集。请联系您的管理员。
               </Alert>
             </Grid>
           )}
-          {isLoading && <div>Loading...</div>}
-          {!isLoading && datasets?.length === 0 && <div>No datasets found</div>}
+          {isLoading && <div>加载中...</div>}
+          {!isLoading && datasets?.length === 0 && <div>未找到数据集</div>}
           {!isLoading && datasets?.length > 0 && (
             <Grid size={12}>
               <StyledTableContainer>
                 <Table aria-label="Datasets table">
                   <DatasetsHeader
-                    headers={['Name', 'Datasets&nbsp;size', 'Vectors Config', 'Vectors count', 'Actions']}
+                    headers={['名称', '数据集大小', '向量配置', '向量数量', '操作']}
                   />
 
                   <StyledTableBody>{tableRows}</StyledTableBody>

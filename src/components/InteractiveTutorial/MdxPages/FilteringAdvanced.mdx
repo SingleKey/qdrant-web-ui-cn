@@ -1,10 +1,10 @@
-export const title = "Advanced Filtering"
+export const title = "高级过滤"
 
-# Advanced Filtering - Nested Filters
+# 高级过滤 - 嵌套过滤器
 
-## Step 1: Create a Collection
+## 步骤1：创建集合
 
-Start by creating a collection named `dinosaurs` with a vector size of 4 and the distance metric set to `Dot`:
+首先创建一个名为`dinosaurs`的集合，向量大小为4，距离度量设置为`Dot`：
 
 ```json withRunButton="true"
 PUT collections/dinosaurs
@@ -16,9 +16,9 @@ PUT collections/dinosaurs
 }
 ```
 
-## Step 2: Add Vectors with Payloads
+## 步骤2：添加带有负载的向量
 
-You can now add points to the collection. Each point contains an `id`,  `vector` and a `payload` with additional information such as the dinosaur species and diet preferences. For example:
+现在可以向集合中添加点。每个点包含一个`id`、`vector`和一个带有附加信息的`payload`，例如恐龙物种和饮食偏好：
 
 ```json withRunButton="true"
 PUT collections/dinosaurs/points
@@ -51,9 +51,9 @@ PUT collections/dinosaurs/points
 ```
 
 
-## Step 3: Index the fields before filtering
+## 步骤3：在过滤前索引字段
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index, Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**注意：** 您应该始终在过滤之前索引字段。如果在创建索引之前使用过滤，Qdrant将以非结构化方式搜索整个数据集。您的搜索性能将非常慢。
 
 ```json withRunButton="true"
 PUT /collections/dinosaurs/index
@@ -71,16 +71,16 @@ PUT /collections/dinosaurs/index
 }
 ```
 
-## Step 4: Basic Filtering with `match`
+## 步骤4：使用`match`进行基本过滤
 
-You can filter points by specific payload values. For instance, the query below matches points where:
+您可以通过特定的负载值过滤点。例如，下面的查询匹配以下条件的点：
 
-- The `diet[].food` contains "meat".
-- The `diet[].likes` is set to `true`.
+- `diet[].food`包含"meat"
+- `diet[].likes`设置为`true`
 
-Both points match these conditions, as:
-- The “t-rex” eats meat and likes it.
-- The “diplodocus” eats meat but doesn't like it.
+两个点都匹配这些条件，因为：
+- "t-rex"吃肉并且喜欢它
+- "diplodocus"吃肉但不喜欢它
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll
@@ -104,11 +104,11 @@ POST /collections/dinosaurs/points/scroll
 }
 ```
 
-However, if you want to retrieve only the points where both conditions are true for the same element within the array (e.g., the "t-rex" with ID 1), you'll need to use a **nested filter**.
+但是，如果您只想检索数组中同一元素同时满足两个条件的点（例如，ID为1的"t-rex"），则需要使用**嵌套过滤器**。
 
-## Step 5: Advanced Filtering with Nested Object Filters
+## 步骤5：使用嵌套对象过滤器进行高级过滤
 
-To apply the filter at the array element level, you use the `nested` filter condition. This ensures that the `food` and `likes` values are evaluated together within each array element:
+要在数组元素级别应用过滤器，您需要使用`nested`过滤器条件。这确保`food`和`likes`值在每个数组元素内一起评估：
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll
@@ -141,17 +141,17 @@ POST /collections/dinosaurs/points/scroll
 }
 ```
 
-With this filter, only the "t-rex" (ID 1) is returned, because its array element satisfies both conditions.
+使用此过滤器，只有"t-rex"（ID 1）被返回，因为它的数组元素满足两个条件。
 
-### Explanation
+### 解释
 
-Nested filters treat each array element as a separate object, applying the filter independently to each element. The parent document (in this case, the dinosaur point) matches the filter if any one array element meets all conditions.
+嵌套过滤器将每个数组元素视为独立的对象，将过滤器独立应用于每个元素。如果任何一个数组元素满足所有条件，则父文档（在本例中为恐龙点）匹配过滤器。
 
-## Step 6: Combining `has_id` with Nested Filters
+## 步骤6：将`has_id`与嵌套过滤器结合使用
 
-Note that `has_id` cannot be used inside a nested filter. If you need to filter by ID as well, include the `has_id` condition as a separate clause, like this:
+请注意，`has_id`不能在嵌套过滤器内部使用。如果您还需要按ID过滤，请将`has_id`条件作为单独的子句包含，如下所示：
 
-You won't get a different answer. You can see that this filter matches the "t-rex" (ID 1) by combining the `nested` diet filter with an explicit ID match.
+您不会得到不同的答案。您可以看到此过滤器通过将`nested`饮食过滤器与显式ID匹配相结合来匹配"t-rex"（ID 1）。
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll

@@ -16,7 +16,7 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
   return (
     <StyledTableRow key={dataset.name} align={'center'}>
       <TableCell width={'50%'}>
-        <Tooltip title={'Import Dataset'} arrow placement={'top'}>
+        <Tooltip title={'导入数据集'} arrow placement={'top'}>
           <Box
             sx={{
               display: 'inline-flex',
@@ -85,7 +85,7 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
 
       <TableCell align="center">{dataset.vectorCount}</TableCell>
       <TableCell align="center">
-        <Tooltip title="Import Dataset" arrow placement={'top'}>
+        <Tooltip title="导入数据集" arrow placement={'top'}>
           <Button
             variant="outlined"
             size="small"
@@ -93,14 +93,14 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
             onClick={() => setIsImportDialogOpen(true)}
             disabled={importing}
           >
-            Import
+            导入
           </Button>
         </Tooltip>
       </TableCell>
       <ImportDatasetDialog
         open={isImportDialogOpen}
         onClose={() => setIsImportDialogOpen(false)}
-        content={`Enter collection name for ${dataset.fileName}`}
+        content={`为 ${dataset.fileName} 输入集合名称`}
         fileName={dataset.fileName}
         actionHandler={importDataset}
         setImporting={setImporting}

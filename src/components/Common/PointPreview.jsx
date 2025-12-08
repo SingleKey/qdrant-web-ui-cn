@@ -12,7 +12,7 @@ const PointPreview = ({ point }) => {
   if (!point) {
     return (
       <Alert severity="info" sx={{ m: 5 }}>
-        Select a point to see its data preview
+        选择一个点查看其数据预览
       </Alert>
     );
   }
@@ -36,7 +36,7 @@ const PointPreview = ({ point }) => {
           height: 48,
         }}
       >
-        <Typography variant="h6">Point {point.id}</Typography>
+        <Typography variant="h6">点 {point.id}</Typography>
       </Box>
 
       {/* Image Section */}

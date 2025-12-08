@@ -63,7 +63,7 @@ function Jwt() {
     });
     const apiKey = qdrantClient.getApiKey();
     if (!apiKey) {
-      setErrorMessage('Please provide API key');
+      setErrorMessage('请提供API密钥');
     }
     setApiKey(apiKey);
   }, []);
@@ -73,8 +73,8 @@ function Jwt() {
       <Box sx={{ p: 5, width: '100%' }}>
         <Grid size={12}>
           <Alert severity="warning">
-            Access Denied: Because of the serverless mode, jwt tools will not work correctly. Please contact your
-            administrator.
+            访问被拒绝：由于服务器less模式，JWT工具将无法正常工作。请联系您的
+            管理员。
           </Alert>
         </Grid>
       </Box>
@@ -95,7 +95,7 @@ function Jwt() {
           gap: 4,
         }}
       >
-        <Typography variant="h4">Generate Access Token</Typography>
+        <Typography variant="h4">生成访问令牌</Typography>
 
         <JwtForm
           expiration={expirationDays}

@@ -1,14 +1,14 @@
-export const title = 'Multivector Search';
+export const title = '多向量搜索';
 
-# Search with ColBERT Multivectors
+# 使用ColBERT多向量进行搜索
 
-In Qdrant, multivectors allow you to store and search multiple vectors for each point in your collection. Additionally, you can store payloads, which are key-value pairs containing metadata about each point. This tutorial will show you how to create a collection, insert points with multivectors and payloads, and perform a search.
+在Qdrant中，多向量允许您为集合中的每个点存储和搜索多个向量。此外，您可以存储负载，这些是包含每个点元数据的键值对。本教程将向您展示如何创建集合、插入带有多向量和负载的点，以及执行搜索。
 
-## Step 1: Create a collection with multivectors
+## 步骤1：创建支持多向量的集合
 
-To use multivectors, you need to configure your collection to store multiple vectors per point. The collection’s configuration specifies the vector size, distance metric, and multivector settings, such as the comparator function.
+要使用多向量，您需要配置集合以存储每个点的多个向量。集合的配置指定向量大小、距离度量以及多向量设置，例如比较器函数。
 
-Run the following request to create a collection with multivectors:
+运行以下请求以创建支持多向量的集合：
 
 ```json withRunButton=true
 PUT collections/multivector_collection
@@ -23,11 +23,11 @@ PUT collections/multivector_collection
 }
 ```
 
-## Step 2: Insert points with multivectors and payloads
+## 步骤2：插入带有多向量和负载的点
 
-Now that the collection is set up, you can insert points where each point contains multiple vectors and a payload. Payloads store additional metadata, such as the planet name and its type.
+现在集合已设置完毕，您可以插入每个点包含多个向量和一个负载的点。负载存储额外的元数据，例如行星名称及其类型。
 
-Run the following request to insert points with multivectors and payloads:
+运行以下请求以插入带有多向量和负载的点：
 
 ```json withRunButton=true
 PUT collections/multivector_collection/points
@@ -84,11 +84,11 @@ PUT collections/multivector_collection/points
 }
 ```
 
-## Step 3: Query the collection 
+## 步骤3：查询集合
 
-To perform a search with multivectors, you can pass multiple query vectors. Qdrant will compare the query vectors against the multivectors and return the most similar results based on the comparator defined for the collection (`max_sim`). You can also request the payloads to be returned along with the search results.
+要使用多向量执行搜索，您可以传递多个查询向量。Qdrant将查询向量与多向量进行比较，并根据为集合定义的比较器（`max_sim`）返回最相似的结果。您还可以请求将负载与搜索结果一起返回。
 
-Run the following request to search with multivectors and retrieve the payloads:
+运行以下请求以使用多向量进行搜索并检索负载：
 
 ```json withRunButton=true
 POST collections/multivector_collection/points/query

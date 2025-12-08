@@ -68,7 +68,7 @@ export const CollectionInfo = ({ collectionName }) => {
       <CollectionAliases collectionName={collectionName} />
       <Card elevation={0}>
         <CardHeader
-          title={'Collection Info'}
+          title={'集合信息'}
           variant="heading"
           sx={{
             flexGrow: 1,
@@ -88,7 +88,7 @@ export const CollectionInfo = ({ collectionName }) => {
                   mb: 0.2,
                 }}
               >
-                Trigger optimizers
+                触发优化器
               </Button>
               <CopyButton text={bigIntJSON.stringify(collection)} />
             </Box>

@@ -10,13 +10,13 @@ import { Code } from '@mui/icons-material';
 import CommandsDrawer from '../components/CodeEditorWindow/Menu/CommandsDrawer/CommandsDrawer';
 import { green } from '@mui/material/colors';
 
-const query = `// List all collections
+const query = `// 列出所有集合
 GET collections
 
-// Get collection info
+// 获取集合信息
 GET collections/collection_name
 
-// List points in a collection, using filter
+// 使用过滤器列出集合中的点
 POST collections/collection_name/points/scroll
 {
   "limit": 10,
@@ -110,7 +110,7 @@ function Console() {
               </Panel>
             </PanelGroup>
           </Grid>
-          <Tooltip title="Commands" placement="left" arrow>
+          <Tooltip title="命令" placement="left" arrow>
             <Fab
               sx={{
                 position: 'absolute',

@@ -31,7 +31,7 @@ function SimilarSerachfield({ conditions, onConditionChange, usingVector }) {
     conditions?.length > 0 && (
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-          <Typography variant="subtitle2">Similar:</Typography>
+          <Typography variant="subtitle2">相似:</Typography>
           {conditions.map((condition) => (
             <Chip
               color="primary"
@@ -52,7 +52,7 @@ function SimilarSerachfield({ conditions, onConditionChange, usingVector }) {
           }}
         >
           <X size={18} />
-          Clear All
+          全部清除
         </Button>
       </Box>
     )

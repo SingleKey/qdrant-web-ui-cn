@@ -19,7 +19,7 @@ const ExpirationSelect = ({ expiration, setExpiration }) => {
           fontWeight: 500,
         }}
       >
-        Expiration
+        过期时间
       </InputLabel>
       <TextField
         select
@@ -36,11 +36,11 @@ const ExpirationSelect = ({ expiration, setExpiration }) => {
           },
         }}
       >
-        <MenuItem value={1}>1 day</MenuItem>
-        <MenuItem value={7}>7 days</MenuItem>
-        <MenuItem value={30}>30 days</MenuItem>
-        <MenuItem value={90}>90 days</MenuItem>
-        <MenuItem value={0}>Never</MenuItem>
+        <MenuItem value={1}>1天</MenuItem>
+        <MenuItem value={7}>7天</MenuItem>
+        <MenuItem value={30}>30天</MenuItem>
+        <MenuItem value={90}>90天</MenuItem>
+        <MenuItem value={0}>永不</MenuItem>
       </TextField>
     </Box>
   );
@@ -73,7 +73,7 @@ function JwtForm({
               setGlobalAccess(false);
             }}
           >
-            Collection Access
+            集合访问
           </Button>
           <Button
             variant={globalAccess && !manageAccess ? 'contained' : 'outlined'}
@@ -83,7 +83,7 @@ function JwtForm({
               setConfiguredCollections([]); // Reset collections if global or managed access is selected
             }}
           >
-            Global Access
+            全局访问
           </Button>
           <Button
             variant={manageAccess ? 'contained' : 'outlined'}
@@ -93,27 +93,27 @@ function JwtForm({
               setConfiguredCollections([]); // Reset collections if global or managed access is selected
             }}
           >
-            Managed Access
+            管理访问
           </Button>
         </StyledButtonGroup>
 
         {/* Description of the access level, displayed depending on the button selection*/}
         {manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Managed Access:</strong> Full access to all data stored in Qdrant. This level of access allows you
-            to read and write data to all collections, as well as create and delete collections, modify collection
-            settings, etc.
+            <strong>管理访问:</strong> 对Qdrant中存储的所有数据的完全访问权限。此访问级别允许您
+            对所有集合进行读写操作，以及创建和删除集合、修改集合
+            设置等。
           </Typography>
         )}
         {globalAccess && !manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Global Access:</strong> Allows read-only access to all data stored in Qdrant.
+            <strong>全局访问:</strong> 允许对Qdrant中存储的所有数据进行只读访问。
           </Typography>
         )}
         {!globalAccess && !manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Collection Access:</strong>
-            This access level allows to configure access level for specific collections.
+            <strong>集合访问:</strong>
+            此访问级别允许为特定集合配置访问权限。
           </Typography>
         )}
       </Box>

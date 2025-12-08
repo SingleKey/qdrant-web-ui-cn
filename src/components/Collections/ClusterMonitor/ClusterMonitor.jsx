@@ -43,30 +43,30 @@ const Legend = ({ sx, dragState }) => {
             size={'1rem'}
             color={theme.palette.mode === 'dark' ? CLUSTER_COLORS.empty.dark : CLUSTER_COLORS.empty.light}
           />
-          <Typography variant="caption">Empty</Typography>
+          <Typography variant="caption">空</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={CLUSTER_COLORS.active} />
-          <Typography variant="caption">Active</Typography>
+          <Typography variant="caption">活跃</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={CLUSTER_COLORS.dead} />
-          <Typography variant="caption">Dead</Typography>
+          <Typography variant="caption">死亡</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={CLUSTER_COLORS.default} />
-          <Typography variant="caption">Other</Typography>
+          <Typography variant="caption">其他</Typography>
         </Box>
         {dragState.isDragging && (
           <Box display="flex" alignItems="center" gap={0.5} sx={{ ml: 2, pl: 2, borderLeft: '1px solid #ccc' }}>
             <Circle
-              size={'1rem'}
-              color={theme.palette.mode === 'dark' ? CLUSTER_COLORS.empty.dark : CLUSTER_COLORS.empty.light}
-              sx={{
-                border: CLUSTER_STYLES.dragAndDrop.awaiting.border,
-              }}
-            />
-            <Typography variant="caption">Drop Here</Typography>
+            size={'1rem'}
+            color={theme.palette.mode === 'dark' ? CLUSTER_COLORS.empty.dark : CLUSTER_COLORS.empty.light}
+            sx={{
+              border: CLUSTER_STYLES.dragAndDrop.awaiting.border,
+            }}
+          />
+          <Typography variant="caption">放这里</Typography>
           </Box>
         )}
       </Box>
@@ -295,7 +295,7 @@ const ClusterMonitor = ({ collectionName }) => {
     return (
       <Box>
         <InfoBanner severity={'warning'} hideCloseButton={true}>
-          <Typography>Distributed mode is not enabled for this cluster.</Typography>
+          <Typography>该集群未启用分布式模式。</Typography>
         </InfoBanner>
       </Box>
     );
@@ -317,7 +317,7 @@ const ClusterMonitor = ({ collectionName }) => {
     >
       <Box sx={{ gridArea: '1 / 2 / 2 / 3' }}>
         <Typography variant="subtitle1" mb={2}>
-          Cluster Nodes
+          集群节点
         </Typography>
       </Box>
       <Box sx={{ gridArea: ' 1 / 3 / 2 / 6', justifyContent: 'end' }}>
@@ -328,7 +328,7 @@ const ClusterMonitor = ({ collectionName }) => {
           variant="subtitle1"
           sx={{ writingMode: 'vertical-lr', textAlign: 'center', transform: 'rotate(180deg)' }}
         >
-          Shards
+          分片
         </Typography>
       </Box>
       <Box

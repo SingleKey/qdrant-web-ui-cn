@@ -65,7 +65,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
     const invalidChar = INVALID_CHARS.find((c) => value.includes(c));
 
     if (invalidChar !== undefined) {
-      return `Collection name cannot contain "${invalidChar}" char`;
+      return `集合名称不能包含 "${invalidChar}" 字符`;
     } else {
       return null;
     }
@@ -97,7 +97,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
 
   uppy.on('upload-error', (_, error, response) => {
     const errorMessage = response?.body?.status?.error || error.message || 'Unknown error';
-    enqueueSnackbar(`Upload failed: ${errorMessage}`, {
+    enqueueSnackbar(`上传失败: ${errorMessage}`, {
       variant: 'error',
       autoHideDuration: null,
       action: (key) => (
@@ -108,7 +108,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
             closeSnackbar(key);
           }}
         >
-          Dismiss
+          关闭
         </Button>
       ),
       anchorOrigin: {
@@ -150,9 +150,9 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
     setFormError(isTooShort || isTooLong || hasForbiddenSymbols);
     setFormMessage(
       isTooShort
-        ? 'Collection name is too short'
+        ? '集合名称太短'
         : isTooLong
-        ? 'Collection name is too long'
+        ? '集合名称太长'
         : hasForbiddenSymbolsMessage
     );
   };
@@ -193,16 +193,16 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
       >
         {/* Step 1 start - enter a collection name*/}
         <Step key={'Step 1 - enter a collection name'}>
-          <StepLabel slots={{ stepIcon: StyledStepIcon }}>Step 1 - Enter a collection name</StepLabel>
+          <StepLabel slots={{ stepIcon: StyledStepIcon }}>步骤 1 - 输入集合名称</StepLabel>
           <StepContent>
             <Typography mb={2} sx={{ fontSize: '0.875rem', fontWeight: 500 }}>
-              Can be new or existing
+              可以是新集合或现有集合
             </Typography>
             <Box sx={{ mb: 2 }}>
               <TextField
                 error={formError}
                 id="collection-name"
-                placeholder="Collection Name"
+                placeholder="集合名称"
                 value={collectionName}
                 helperText={formError ? formMessage : ''}
                 onChange={handleTextChange}
@@ -230,7 +230,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
                 sx={{ mt: 1, mr: 1 }}
                 disabled={!collectionName || formError}
               >
-                Continue
+                继续
               </Button>
             </Box>
           </StepContent>
@@ -239,7 +239,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
 
         {/* Step 2 start - upload a snapshot file*/}
         <Step key={'Step 2 - upload a snapshot file'}>
-          <StepLabel slots={{ stepIcon: StyledStepIcon }}>Step 2 - Upload a snapshot file</StepLabel>
+          <StepLabel slots={{ stepIcon: StyledStepIcon }}>步骤 2 - 上传快照文件</StepLabel>
           <StepContent>
             <Box sx={{ mb: 2 }}>
               {/* Here we have a drag and drop area*/}
@@ -248,7 +248,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
             </Box>
             <Box mb={2}>
               <Button variant="contained" onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
-                Back
+                返回
               </Button>
             </Box>
           </StepContent>
@@ -257,7 +257,7 @@ export const SnapshotUploadForm = ({ onSubmit, onComplete, sx }) => {
       </Stepper>
       {activeStep === 3 && (
         <Paper square elevation={0} sx={{ p: 3 }}>
-          <Typography>All steps completed - you&apos;re finished 🎉</Typography>
+          <Typography>所有步骤已完成 - 操作成功 🎉</Typography>
         </Paper>
       )}
     </Box>

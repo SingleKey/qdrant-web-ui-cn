@@ -107,7 +107,7 @@ export default function Notifications() {
     <React.Fragment>
       <Tooltip
         open={tooltipOpen}
-        title="Toggle notifications"
+        title="切换通知"
         enterDelay={300}
         onOpen={() => {
           setTooltipOpen(!open);
@@ -120,7 +120,7 @@ export default function Notifications() {
           ref={anchorRef}
           aria-controls={open ? 'notifications-popup' : undefined}
           aria-haspopup="true"
-          aria-label="unreadNotifications"
+          aria-label="未读通知"
           data-ga-event-category="AppBar"
           data-ga-event-action="toggleNotifications"
           onClick={handleToggle}
@@ -149,18 +149,18 @@ export default function Notifications() {
       >
         <div>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, mr: 2 }}>
-            <Typography variant={'h5'}>Notifications</Typography>
+            <Typography variant={'h5'}>通知</Typography>
             <Box sx={{ flexGrow: 1 }} />
             <IconButton onClick={handleToggle}>
               <Close />
             </IconButton>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, mr: 2 }}>
-            <Typography variant={'body1'}>Configuration Issues Detected</Typography>
+            <Typography variant={'body1'}>检测到配置问题</Typography>
             <Box sx={{ flexGrow: 1 }} />
             {issues.length > 0 && (
               <Button color="error" variant="contained" onClick={handleDeleteAll}>
-                Delete all issues
+                删除所有问题
               </Button>
             )}
           </Box>
@@ -175,7 +175,7 @@ export default function Notifications() {
                 ))
               ) : (
                 <ListItem>
-                  <Typography color="text.secondary">No notifications (issues)</Typography>
+                  <Typography color="text.secondary">没有通知（问题）</Typography>
                 </ListItem>
               )
             ) : (
@@ -229,17 +229,17 @@ function Notification({ issue }) {
         <CircularProgress size={32} />
       ) : result ? (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <CheckCircleOutlineIcon color="success" />
-          <Typography color="success" variant="body1">
-            <b>Success! Indexing successfully acknowledged.</b>
-          </Typography>
-        </Box>
+              <CheckCircleOutlineIcon color="success" />
+              <Typography color="success" variant="body1">
+                <b>成功！索引已成功确认。</b>
+              </Typography>
+            </Box>
       ) : (
         <React.Fragment>
           {error ? (
             <Box>
               <Typography color="error" variant="body1">
-                <b>Error</b>
+                <b>错误</b>
               </Typography>
               <CodeBlock
                 codeStr={error.toString()}
@@ -288,7 +288,7 @@ ${JSON.stringify(issue.solution.immediate.action.body, null, 2)}`}
                   language="json"
                   withRunButton={true}
                   onRun={handleRun}
-                  title="Solution"
+                  title="解决方案"
                   editable={false}
                 />
               </Box>
@@ -297,7 +297,7 @@ ${JSON.stringify(issue.solution.immediate.action.body, null, 2)}`}
           {issue.solution && issue.solution.immediate_choice && (
             <React.Fragment>
               <Typography gutterBottom variant="body" color="text.secondary">
-                Choose one of the following solutions:
+                选择以下解决方案之一：
               </Typography>
               {issue.solution.immediate_choice.map((choice, index) => (
                 <React.Fragment key={index}>
@@ -319,13 +319,13 @@ ${JSON.stringify(choice.action.body, null, 2)}`}
                       language="json"
                       withRunButton={true}
                       onRun={handleRun}
-                      title="Solution"
+                      title="解决方案"
                       editable={false}
                     />
                   </Box>
                   {index < issue.solution.immediate_choice.length - 1 ? (
                     <Divider sx={{ width: '100%' }}>
-                      <Chip label="OR" size="small" />
+                      <Chip label="或" size="small" />
                     </Divider>
                   ) : null}
                 </React.Fragment>

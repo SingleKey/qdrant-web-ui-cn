@@ -33,7 +33,7 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>
         <Typography variant="h6" component="div">
-          Transfer Shard
+          转移分片
         </Typography>
       </DialogTitle>
 
@@ -41,20 +41,20 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
         <Box sx={{ mb: 3 }}>
           <Alert severity="info" sx={{ mb: 2 }}>
             <Typography variant="body2">
-              This action will move shard {shard.shard_id} from peer {fromPeerId} to peer {toPeerId}.
-              {shard.shard_key && ` Shard key: ${shard.shard_key}`}
+              此操作将把分片 {shard.shard_id} 从节点 {fromPeerId} 转移到节点 {toPeerId}。
+              {shard.shard_key && ` 分片键：${shard.shard_key}`}
             </Typography>
           </Alert>
 
           <Box sx={{ mb: 2 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle2" fontWeight="bold">
-                Request
+                请求
               </Typography>
               <CopyButton
                 text={`POST collections/${collectionName}/cluster\n${requestString}`}
-                tooltip="Copy request to clipboard"
-                successMessage="Request copied to clipboard"
+                tooltip="复制请求到剪贴板"
+                successMessage="请求已复制到剪贴板"
               />
             </Box>
 
@@ -95,8 +95,8 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
 
           <Box>
             <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 1 }}>
-              Shard Details
-            </Typography>
+                分片详情
+              </Typography>
             <Box
               sx={{
                 display: 'grid',
@@ -106,12 +106,12 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
               }}
             >
               <Typography variant="body2" color="text.secondary">
-                ID:
+                ID：
               </Typography>
               <Typography variant="body2">{shard.shard_id}</Typography>
 
               <Typography variant="body2" color="text.secondary">
-                State:
+                状态：
               </Typography>
               <Typography
                 variant="body2"
@@ -126,8 +126,8 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
               {shard.shard_key && (
                 <>
                   <Typography variant="body2" color="text.secondary">
-                    Key:
-                  </Typography>
+                  键：
+                </Typography>
                   <Typography variant="body2" fontFamily="monospace">
                     {shard.shard_key}
                   </Typography>
@@ -135,12 +135,12 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
               )}
 
               <Typography variant="body2" color="text.secondary">
-                From Peer:
+                源节点：
               </Typography>
               <Typography variant="body2">{fromPeerId}</Typography>
 
               <Typography variant="body2" color="text.secondary">
-                To Peer:
+                目标节点：
               </Typography>
               <Typography variant="body2">{toPeerId}</Typography>
             </Box>
@@ -150,10 +150,10 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
 
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={loading}>
-          Cancel
+          取消
         </Button>
         <Button onClick={handleConfirm} variant="contained" color="primary" disabled={loading}>
-          {loading ? 'Transferring...' : 'Confirm Transfer'}
+          {loading ? '转移中...' : '确认转移'}
         </Button>
       </DialogActions>
     </Dialog>

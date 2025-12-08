@@ -52,7 +52,7 @@ export const MdxCodeBlock = ({ children }) => {
       {result && result !== '{}' && (
         <Box ref={resultRef} sx={{ mt: 2 }}>
           <Typography variant="subtitle1" mb={2}>
-            Result
+            结果
           </Typography>
           <Box sx={{ borderRadius: '0.5rem', overflow: 'hidden', border: `1px solid ${theme.palette.divider}` }}>
             <CodeBlockResult code={result} />

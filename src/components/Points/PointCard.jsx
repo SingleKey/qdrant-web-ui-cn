@@ -65,12 +65,12 @@ const PointCard = (props) => {
             <>
               <CopyButton
                 text={bigIntJSON.stringify(point)}
-                tooltip={'Copy point to clipboard'}
-                successMessage={'Point JSON copied to clipboard.'}
+                tooltip={'复制点到剪贴板'}
+                successMessage={'点JSON已复制到剪贴板'}
               />
-              <Tooltip title={'Delete point'} placement={'left'}>
+              <Tooltip title={'删除点'} placement={'left'}>
                 <IconButton
-                  aria-label={'delete point'}
+                  aria-label={'删除点'}
                   onClick={() => {
                     setOpenDeleteDialog(true);
                   }}
@@ -99,12 +99,12 @@ const PointCard = (props) => {
       <ConfirmationDialog
         open={openDeleteDialog}
         onClose={() => setOpenDeleteDialog(false)}
-        title={'Delete point ' + point.id}
-        content={`Are you sure you want to delete point with id ${point.id}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'删除点 ' + point.id}
+        content={`您确定要删除ID为 ${point.id} 的点吗？`}
+        warning={`此操作无法撤销。`}
+        actionName={'删除'}
         actionHandler={() => deletePoint()}
-        aria-label="Delete Point Confirmation Dialog"
+        aria-label="删除点确认对话框"
       />
     </>
   );

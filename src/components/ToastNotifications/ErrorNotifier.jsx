@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSnackbar } from 'notistack';
 import { getSnackbarOptions } from '../Common/utils/snackbarOptions';
 
-export const ErrorNotifier = ({ message = 'Something went wrong', callback }) => {
+export const ErrorNotifier = ({ message = '发生了错误', callback }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const errorSnackbarOptions = getSnackbarOptions('error', closeSnackbar, 6000);
 

@@ -1,14 +1,14 @@
-export const title = 'Multitenancy';
+export const title = '多租户';
 
-# Separate User Data in Multitenant Setups
+# 在多租户设置中分离用户数据
 
-In this tutorial, we will cover how to implement multitenancy in Qdrant. Multitenancy allows you to host multiple tenants or clients within a single instance of Qdrant, ensuring data isolation and access control between tenants. This feature is essential for use cases where you need to serve different clients while maintaining separation of their data.
+在本教程中，我们将介绍如何在Qdrant中实现多租户。多租户允许您在一个Qdrant实例中托管多个租户或客户端，确保租户之间的数据隔离和访问控制。此功能对于需要为不同客户端提供服务同时保持其数据分离的用例至关重要。
 
-## Step 1: Create a collection
+## 步骤1：创建集合
 
-Imagine you are running a recommendation service where different departments (tenants) store their data in Qdrant. By using **payload-based multitenancy**, you can keep all tenants’ data in a single collection but filter the data based on a unique tenant identifier.
+假设您正在运行一个推荐服务，其中不同部门（租户）将其数据存储在Qdrant中。通过使用**基于负载的多租户**，您可以将所有租户的数据保存在单个集合中，但基于唯一的租户标识符过滤数据。
 
-Run the following request to create a shared collection for all tenants:
+运行以下请求为所有租户创建共享集合：
 
 ```json withRunButton=true
 PUT collections/central_library
@@ -20,11 +20,11 @@ PUT collections/central_library
 }
 ```
 
-## Step 2: Build a tenant index
+## 步骤2：构建租户索引
 
-Qdrant supports efficient indexing based on the tenant's identifier to optimize multitenant searches. By enabling tenant indexing, you can structure data on disk for faster tenant-specific searches, improving performance and reducing disk reads.
+Qdrant支持基于租户标识符的高效索引，以优化多租户搜索。通过启用租户索引，您可以在磁盘上构建数据结构以实现更快的租户特定搜索，从而提高性能并减少磁盘读取。
 
-Run the following request to enable indexing for the tenant identifier (`group_id`):
+运行以下请求为租户标识符（`group_id`）启用索引：
 
 ```json withRunButton=true
 PUT /collections/central_library/index
@@ -37,11 +37,11 @@ PUT /collections/central_library/index
 }
 ```
 
-## Step 3: Load vectors for tenants
+## 步骤3：为租户加载向量
 
-Next, you will load data into the shared collection. Each data point is tagged with a tenant-specific identifier in the payload. This identifier (`group_id`) ensures that tenants' data remains isolated even when stored in the same collection.
+接下来，您将向共享集合中加载数据。每个数据点在负载中都标记有租户特定的标识符。此标识符（`group_id`）确保即使存储在同一个集合中，租户的数据也能保持隔离。
 
-Run the following request to insert data points:
+运行以下请求以插入数据点：
 
 ```json withRunButton=true
 PUT /collections/central_library/points
@@ -78,11 +78,11 @@ PUT /collections/central_library/points
 }
 ```
 
-## Step 4: Perform a filtered query
+## 步骤4：执行过滤查询
 
-When querying the shared collection, use the `group_id` payload field to ensure tenants can only access their own data. The filter in this query ensures that only points belonging to the specified `group_id` are returned.
+查询共享集合时，使用`group_id`负载字段确保租户只能访问自己的数据。此查询中的过滤器确保仅返回属于指定`group_id`的点。
 
-Run the following request to search for data specific to `user_1`:
+运行以下请求以搜索特定于`user_1`的数据：
 
 ```json withRunButton=true
 POST /collections/central_library/points/query
@@ -103,12 +103,12 @@ POST /collections/central_library/points/query
 }
 ```
 
-## Step 5: Add more data
+## 步骤5：添加更多数据
 
-If needed, you can add more data points for multiple tenants. This example shows how to expand the collection with new points tagged with different `group_id` values:
+如果需要，您可以为多个租户添加更多数据点。此示例显示如何使用标记有不同`group_id`值的新点扩展集合：
 
 <details open={true}>
-<summary>Add more data</summary>
+<summary>添加更多数据</summary>
 
 ```json withRunButton=true
 PUT /collections/central_library/points
@@ -164,11 +164,11 @@ PUT /collections/central_library/points
 ```
 </details>
 
-## Step 6: Group query results
+## 步骤6：分组查询结果
 
-You can group query results by specific fields, such as `group_id`, to get an overview of each tenant's data. This query groups results by `group_id` and limits the number of groups and the number of points per group.
+您可以通过特定字段（如`group_id`）对查询结果进行分组，以获取每个租户数据的概览。此查询按`group_id`对结果进行分组，并限制组数和每组中的点数。
 
-Run the following request to group the results by `group_id`:
+运行以下请求以按`group_id`对结果进行分组：
 
 ```json withRunButton=true
 POST /collections/central_library/points/query/groups

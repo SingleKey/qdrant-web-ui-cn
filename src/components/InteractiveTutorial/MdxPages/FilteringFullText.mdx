@@ -1,12 +1,12 @@
-export const title = 'Full Text Filtering';
+export const title = '全文过滤';
 
-# Full Text Filtering
+# 全文过滤
 
-Here's a step-by-step tutorial on **Full Text Filtering in Qdrant** using a collection of planetary data with description fields:
+这是一个关于**Qdrant中的全文过滤**的分步教程，使用带有描述字段的行星数据集合：
 
-## Step 1: Create a collection
+## 步骤1：创建集合
 
-We first create a collection named `star_charts` with vectors of size 4 and dot product distance for similarity.
+我们首先创建一个名为`star_charts`的集合，向量大小为4，相似度距离度量设置为点积。
 
 ```json withRunButton="true"
 PUT /collections/star_charts
@@ -18,9 +18,9 @@ PUT /collections/star_charts
 }
 ```
 
-## Step 2: Add data with descriptions in payload
+## 步骤2：在负载中添加带有描述的数据
 
-Next, we add data to the collection. Each entry includes an id, vector and a payload containing details about various celestial bodies, such as colony information, whether the body supports life and a description.
+接下来，我们向集合中添加数据。每个条目包含一个id、向量和一个负载，负载包含各种天体的详细信息，如殖民地信息、是否支持生命以及描述。
 
 ```json withRunButton="true"
 PUT collections/star_charts/points
@@ -75,10 +75,10 @@ PUT collections/star_charts/points
 }
 ```
 
-### Step 3: Try filtering with exact phrase (substring match)
+### 步骤3：尝试使用精确短语过滤（子字符串匹配）
 
-Now, let's try to filter the descriptions to find entries that contain the exact phrase "host colonies." 
-Qdrant supports text filtering by default using exact matches, but note that this will not tokenize the text.
+现在，让我们尝试过滤描述以查找包含精确短语"host colonies"的条目。
+Qdrant默认支持使用精确匹配进行文本过滤，但请注意这不会对文本进行分词。
 
 ```json withRunButton="true"
 POST /collections/star_charts/points/scroll
@@ -98,15 +98,15 @@ POST /collections/star_charts/points/scroll
 }
 ```
 
-You’ll notice this filter works, but if you change the phrase slightly, it won’t return results, since substring matching in unindexed text isn’t flexible enough for variations.
+您会注意到这个过滤器有效，但如果您稍微更改短语，它将不会返回结果，因为未索引文本中的子字符串匹配对于变体不够灵活。
 
-**Note**: If your cluster is running on Qdrant Cloud, this query fails. On Qdrant Cloud, collections are configured to run in strict mode by default, which prevents querying unindexed fields. You'll learn how to index a field for text filtering next.
+**注意**：如果您的集群运行在Qdrant Cloud上，此查询将失败。在Qdrant Cloud上，集合默认配置为在严格模式下运行，这会阻止查询未索引的字段。您将在下一步学习如何为文本过滤索引字段。
 
-### Step 4: Index the description field
+### 步骤4：索引描述字段
 
-To make filtering more powerful and flexible, we’ll index the `description` field. This will tokenize the text, allowing for more complex queries such as filtering for phrases like "cave colonies." We use a `word` tokenizer, and only tokens that are between 5 and 20 characters will be indexed.
+为了使过滤更强大和灵活，我们将索引`description`字段。这将分词文本，允许更复杂的查询，例如过滤像"cave colonies"这样的短语。我们使用`word`分词器，只有长度在5到20个字符之间的标记才会被索引。
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index (like in Step 3), Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**注意：** 您应该始终在过滤之前索引字段。如果您在创建索引之前使用过滤（如步骤3），Qdrant将以非结构化方式搜索整个数据集。您的搜索性能将非常慢。
 
 ```json withRunButton="true"
 PUT /collections/star_charts/index
@@ -120,10 +120,10 @@ PUT /collections/star_charts/index
 }
 ```
 
-### Step 5: Try the filter again
+### 步骤5：再次尝试过滤器
 
-After indexing, you can now run the filter again, but this time not searching for a phrase. 
-Now you will filter for all tokens "caves" AND "colonies" from the descriptions. 
+索引后，您现在可以再次运行过滤器，但这次不是搜索短语。
+现在您将过滤描述中的所有标记"caves"和"colonies"。 
 
 ```json withRunButton="true"
 POST /collections/star_charts/points/scroll
@@ -142,6 +142,6 @@ POST /collections/star_charts/points/scroll
   "with_payload": true
 }
 ```
-## Summary
+## 总结
 
-Full text filtering on an unindexed field performs a substring match by default, or results in an error on collections running in strict mode (the default on Qdrant Cloud). It's a best practice to index the field first. This enables more advanced full text queries, such as queries that ignore the word sequence completely.
+在未索引字段上进行全文过滤默认执行子字符串匹配，或者在严格模式下运行的集合上导致错误（Qdrant Cloud上的默认设置）。最佳实践是首先索引字段。这使得更高级的全文查询成为可能，例如完全忽略单词顺序的查询。

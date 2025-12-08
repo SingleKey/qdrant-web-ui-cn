@@ -45,7 +45,7 @@ export function codeParse(codeText) {
         method: null,
         endpoint: null,
         reqBody: null,
-        error: 'Fix the Position brackets to run & check the json',
+        error: '请修复括号位置并检查 JSON 格式',
       };
     }
   }
@@ -54,21 +54,21 @@ export function codeParse(codeText) {
       method: null,
       endpoint: null,
       reqBody: reqBody,
-      error: 'Add Headline or remove the line gap between json and headline (if any)',
+      error: '请添加请求头，或移除 JSON 与请求头之间的空行',
     };
   } else if (method === '') {
     return {
       method: null,
       endpoint: endpoint,
       reqBody: reqBody,
-      error: 'Add method',
+      error: '请添加请求方法',
     };
   } else if (endpoint === '') {
     return {
       method: method,
       endpoint: null,
       reqBody: reqBody,
-      error: 'Add endpoint',
+      error: '请添加请求端点',
     };
   } else {
     return {

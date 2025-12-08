@@ -42,13 +42,13 @@ function Collection() {
                 aria-label="tabs"
                 aria-description="Collection tabs menu"
               >
-                <Tab label="Points" value={'points'} />
-                <Tab label="Info" value={'info'} />
-                {!isRestricted && <Tab label="Cluster" value={'cluster'} />}
-                {!isRestricted && <Tab label="Search Quality" value={'quality'} />}
-                {!isRestricted && <Tab label="Snapshots" value={'snapshots'} />}
-                <Tab label="Visualize" component={Link} to={`${location.pathname}/visualize`} />
-                <Tab label="Graph" component={Link} to={`${location.pathname}/graph`} />
+                <Tab label="向量点" value={'points'} />
+                <Tab label="信息" value={'info'} />
+                {!isRestricted && <Tab label="集群" value={'cluster'} />}
+                {!isRestricted && <Tab label="搜索质量" value={'quality'} />}
+                {!isRestricted && <Tab label="快照" value={'snapshots'} />}
+                <Tab label="可视化" component={Link} to={`${location.pathname}/visualize`} />
+                <Tab label="图" component={Link} to={`${location.pathname}/graph`} />
               </Tabs>
             </Box>
           </Grid>

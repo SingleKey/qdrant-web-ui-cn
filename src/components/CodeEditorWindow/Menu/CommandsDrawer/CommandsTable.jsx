@@ -71,7 +71,7 @@ const CommandsTableRow = forwardRef((props, ref) => {
       tabIndex={tabIndex}
     >
       <TableCell sx={rowStyle} width={'50px'}>
-        <Tooltip title={'Insert command into the console window'} disableFocusListener>
+        <Tooltip title={'Insert command into console window'} disableFocusListener>
           <IconButton onClick={onClick} className={'insert-button'}>
             <ArrowBack />
           </IconButton>
@@ -142,7 +142,7 @@ const CommandsTable = ({ commands, handleInsertCommand }) => {
     }`;
 
     handleInsertCommand(commandText);
-    enqueueSnackbar('Command inserted', successSnackbarOptions);
+    enqueueSnackbar('命令已插入', successSnackbarOptions);
   };
 
   const handleKeyDown = (e) => {

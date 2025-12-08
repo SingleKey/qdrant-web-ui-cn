@@ -100,7 +100,7 @@ const CollectionAliases = ({ collectionName }) => {
         <StyledTableHead sx={{ background: theme.palette.background.paperElevation1, borderBottom: 0 }}>
           <TableRow sx={{ background: alpha(theme.palette.action.hover, 0.04) }}>
             <TableCell sx={{ py: 1, borderBottom: 0 }}>
-              <Typography variant="h6">Aliases</Typography>
+              <Typography variant="h6">别名</Typography>
             </TableCell>
             <TableCell sx={{ py: 0.5, borderBottom: 0 }} align="right">
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -110,7 +110,7 @@ const CollectionAliases = ({ collectionName }) => {
                   sx={{ display: 'block', py: 0.75, mb: 0.2 }}
                   onClick={() => setOpenCreateModal(true)}
                 >
-                  Create alias
+                  创建别名
                 </Button>
               </Box>
             </TableCell>
@@ -122,7 +122,7 @@ const CollectionAliases = ({ collectionName }) => {
             <StyledTableRow>
               <TableCell colSpan={2} width={'100%'} align="left">
                 <Typography variant="subtitle1" color="text.secondary">
-                  No aliases found
+                  未找到别名
                 </Typography>
               </TableCell>
             </StyledTableRow>
@@ -137,10 +137,10 @@ const CollectionAliases = ({ collectionName }) => {
       <ConfirmationDialog
         open={!!aliasToDelete}
         onClose={() => setAliasToDelete('')}
-        title={'Delete Alias'}
-        content={`Are you sure you want to delete the alias ${aliasToDelete}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'删除别名'}
+        content={`您确定要删除别名 ${aliasToDelete} 吗？`}
+        warning={`此操作无法撤销。`}
+        actionName={'删除'}
         actionHandler={() => {
           deleteAlias(aliasToDelete).catch((e) => console.error(e));
           setAliasToDelete('');
@@ -159,7 +159,7 @@ const AliasRow = ({ aliasName, onDelete }) => (
     </TableCell>
     <TableCell align="right">
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Tooltip title={'Delete alias'} placement={'left'}>
+        <Tooltip title={'删除别名'} placement={'left'}>
           <Button
             variant="outlined"
             size="small"
@@ -173,7 +173,7 @@ const AliasRow = ({ aliasName, onDelete }) => (
             color="error"
             data-testid={`delete-alias-${aliasName}`}
           >
-            Delete
+            删除
           </Button>
         </Tooltip>
       </Box>
@@ -233,13 +233,13 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
       }}
     >
       <DialogTitle sx={{ p: 3 }} id="create-alias-title">
-        Create Collection Alias
+        创建集合别名
       </DialogTitle>
       <DialogContent>
         <TextField
           id="alias-name-input"
           data-testid="alias-name-input"
-          placeholder="Alias Name"
+          placeholder="别名"
           value={aliasName}
           onChange={handleInputChange}
           onKeyDown={(e) => {
@@ -249,7 +249,7 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
             }
           }}
           error={error}
-          helperText={error ? 'Alias name is required' : ''}
+          helperText={error ? '别名不能为空' : ''}
           autoFocus
           required
           margin="dense"
@@ -259,10 +259,10 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
         <Button variant="outlined" color="inherit" onClick={handleClose}>
-          Cancel
+          取消
         </Button>
         <Button variant="contained" disabled={!aliasName} onClick={handleCreate} data-testid="create-alias-button">
-          Create
+          创建
         </Button>
       </DialogActions>
     </Dialog>

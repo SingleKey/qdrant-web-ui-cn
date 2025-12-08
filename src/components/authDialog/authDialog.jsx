@@ -57,10 +57,10 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
           },
         }}
       >
-        <DialogTitle>Set API Key</DialogTitle>
+        <DialogTitle>设置API密钥</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
-            This instance of Qdrant might be protected by an API Key. If so, please enter your API Key to continue.
+            此Qdrant实例可能受API密钥保护。如果是，请输入您的API密钥以继续。
           </DialogContentText>
           <TextField
             onChange={(e) => setApiKey(e.target.value)}
@@ -72,9 +72,9 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
             }}
             autoFocus
             id="api-key-input"
-            placeholder="API Key"
+            placeholder="API密钥"
             error={error}
-            helperText={error ? 'API Key is required' : ''}
+            helperText={error ? '需要API密钥' : ''}
             type={showApiKey ? 'text' : 'password'}
             fullWidth
             variant="outlined"
@@ -97,10 +97,10 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
           <Button variant="outlined" color="inherit" onClick={handleClose}>
-            Cancel
+            取消
           </Button>
           <Button variant="contained" onClick={handleApply}>
-            Apply
+            应用
           </Button>
         </DialogActions>
       </Dialog>

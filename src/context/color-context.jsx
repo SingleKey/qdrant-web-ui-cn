@@ -23,20 +23,20 @@ export function ColorModeProvider({ children, initialMode }) {
   );
 
   useEffect(() => {
-    // Accept messages as: { "mode": "light"|"dark" } or { qdrantTheme: "light"|"dark" } or raw 'light'/'dark'
+    // 接受消息格式：{ "mode": "light"|"dark" } 或 { qdrantTheme: "light"|"dark" } 或原始字符串 'light'/'dark'
     const handleMessage = (event) => {
       let payload = event.data;
       if (typeof payload === 'string') {
         try {
           payload = JSON.parse(payload);
         } catch (err) {
-          console.log('could not parse message payload as JSON', err);
+          console.log('无法将消息负载解析为 JSON', err);
         }
       }
       const mode = payload?.mode ?? payload?.qdrantTheme ?? payload;
       if (mode === 'light' || mode === 'dark') {
         setColorMode(mode);
-        event.source.postMessage(`{ status: 'success', message: 'Color mode changed to ${mode}' }`, event.origin);
+        event.source.postMessage(`{ status: 'success', message: '颜色模式已更改为 ${mode}' }`, event.origin);
       }
     };
 

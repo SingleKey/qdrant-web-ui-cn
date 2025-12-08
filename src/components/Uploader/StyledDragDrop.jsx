@@ -54,8 +54,8 @@ export const StyledDragDrop = (props) => (
     <StyledDragDropBase
       locale={{
         strings: {
-          dropHereOr: '%{browse} or drop here',
-          browse: 'Browse',
+          dropHereOr: '%{browse} 或拖放文件到此处',
+          browse: '浏览',
         },
       }}
       height="120px"

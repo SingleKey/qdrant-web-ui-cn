@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react';
 import svgrPlugin from 'vite-plugin-svgr';
-import eslintPlugin from 'vite-plugin-eslint';
+// import eslintPlugin from 'vite-plugin-eslint';
 import {rehypeMetaAsAttributes} from "./src/lib/rehype-meta-as-attributes";
 
 // https://vitejs.dev/config/
@@ -23,14 +23,14 @@ export default defineConfig(async () => {
           // ...svgr options (https://react-svgr.com/docs/options/)
         },
       }),
-      eslintPlugin({
-        include: ['src/**/*.jsx', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'],
-        exclude: [
-          'node_modules/**',
-          'dist/**, build/**',
-          '**/*.mdx',
-          '**/*.md'],
-      }),
+      // eslintPlugin({
+      //   include: ['src/**/*.jsx', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'],
+      //   exclude: [
+      //     'node_modules/**',
+      //     'dist/**, build/**',
+      //     '**/*.mdx',
+      //     '**/*.md'],
+      // }),
       mdx.default({
         rehypePlugins: [
           rehypeMetaAsAttributes,

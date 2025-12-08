@@ -18,7 +18,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
   return (
     <StyledTableRow key={snapshot.name}>
       <TableCell width={'60%'}>
-        <Tooltip title={'Download snapshot'} arrow placement={'top'}>
+        <Tooltip title={'下载快照'} arrow placement={'top'}>
           <Box
             sx={{
               display: 'inline-flex',
@@ -74,11 +74,11 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
         </Tooltip>
         {progress > 0 && (
           <Chip
-            label={`Preparing download`}
+            label={`准备下载`}
             size="small"
             sx={{ ml: 3, mb: '2px' }}
             deleteIcon={
-              <Tooltip title={'Cancel download'} placement={'right'}>
+              <Tooltip title={'取消下载'} placement={'right'}>
                 <CircleX size={16} />
               </Tooltip>
             }
@@ -89,7 +89,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
           />
         )}
       </TableCell>
-      <TableCell align="center">{snapshot.creation_time || 'unknown'}</TableCell>
+      <TableCell align="center">{snapshot.creation_time || '未知'}</TableCell>
       <TableCell align="center" sx={{ whiteSpace: 'nowrap' }}>
         {prettyBytes(snapshot.size)}
       </TableCell>
@@ -105,7 +105,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
               py: '4px',
             }}
           >
-            Download
+            下载
           </Button>
           <Button
             variant="outlined"
@@ -118,17 +118,17 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
               py: '4px',
             }}
           >
-            Delete
+            删除
           </Button>
         </Box>
       </TableCell>
       <ConfirmationDialog
         open={isDeleteDialogOpen}
         onClose={() => setIsDeleteDialogOpen(false)}
-        title={'Delete snapshot'}
-        content={`Are you sure you want to delete snapshot ${snapshot.name}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'删除快照'}
+        content={`您确定要删除快照 ${snapshot.name} 吗？`}
+        warning={`此操作无法撤销。`}
+        actionName={'删除'}
         actionHandler={() => deleteSnapshot(snapshot.name)}
       />
     </StyledTableRow>

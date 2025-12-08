@@ -47,19 +47,19 @@ const Vectors = memo(function Vectors({ point, onConditionChange }) {
 
   return (
     <Box>
-      <Typography variant="subtitle2">Vectors:</Typography>
+      <Typography variant="subtitle2">向量:</Typography>
       {Object.keys(vectors).map((key) => {
         return (
           <Grid key={key} container spacing={2} alignItems={'center'}>
             <Grid size={{ xs: 12, md: 4 }} display={'flex'} alignItems={'center'}>
               {key === '' ? (
                 <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                  Default vector
+                  默认向量
                 </Typography>
               ) : (
                 <>
                   <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                    Name:
+                    名称:
                   </Typography>
                   <Chip label={key} size="small" variant="outlined" sx={{ mr: 1 }} />
                 </>
@@ -67,7 +67,7 @@ const Vectors = memo(function Vectors({ point, onConditionChange }) {
             </Grid>
             <Grid my={1} size={{ xs: 12, md: 4 }}>
               <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                Length:
+                长度:
               </Typography>
               <Chip
                 sx={{
@@ -99,9 +99,9 @@ const Vectors = memo(function Vectors({ point, onConditionChange }) {
             >
               <CopyTextButton
                 text={bigIntJSON.stringify(vectors[key])}
-                tooltip={'Copy vector to clipboard'}
+                tooltip={'复制向量到剪贴板'}
                 tooltipPlacement={'left'}
-                successMessage={`Copied ${key === '' ? 'default vector' : 'vector ' + key} to clipboard`}
+                successMessage={`已复制 ${key === '' ? '默认向量' : '向量 ' + key} 到剪贴板`}
                 buttonProps={{
                   size: 'small',
                 }}
@@ -114,7 +114,7 @@ const Vectors = memo(function Vectors({ point, onConditionChange }) {
                   width: { xs: '100%', md: 'auto' },
                 }}
               >
-                Open graph
+                打开图谱
               </StyledButton>
               {typeof onConditionChange !== 'function' ? null : (
                 <StyledButton
@@ -127,7 +127,7 @@ const Vectors = memo(function Vectors({ point, onConditionChange }) {
                     width: { xs: '100%', md: 'auto' },
                   }}
                 >
-                  Find Similar
+                  查找相似
                 </StyledButton>
               )}
             </Grid>

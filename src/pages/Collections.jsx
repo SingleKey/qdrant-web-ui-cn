@@ -161,7 +161,7 @@ function Collections() {
           )}
           {displayCollections && !errorMessage && displayCollections.length === 0 && (
             <Grid textAlign={'center'} mt={3} size={12}>
-              <Typography> 📪 No collection is present</Typography>
+              <Typography> 📪 当前没有集合</Typography>
             </Grid>
           )}
 

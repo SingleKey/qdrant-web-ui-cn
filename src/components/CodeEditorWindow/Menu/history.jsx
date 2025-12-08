@@ -34,32 +34,32 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
   const columns = [
     {
       field: 'method',
-      headerName: 'Method',
+      headerName: '方法',
       width: 100,
       valueGetter: (r, v) => v.code.method,
     },
     {
       field: 'endpoint',
-      headerName: 'Endpoint',
+      headerName: '端点',
       minWidth: 100,
       valueGetter: (r, v) => v.code.endpoint,
       flex: 1,
     },
     {
       field: 'time',
-      headerName: 'Time',
+      headerName: '时间',
       width: 100,
       valueGetter: (r, v) => v.time,
     },
     {
       field: 'date',
-      headerName: 'Date',
+      headerName: '日期',
       width: 100,
       valueGetter: (r, v) => v.date,
     },
     {
       field: 'delete',
-      headerName: 'Delete',
+      headerName: '删除',
       width: 100,
       align: 'center',
       headerAlign: 'center',
@@ -98,13 +98,13 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
           >
             <Stack direction="row" spacing={2}>
               <Typography variant="h5" m={2} gutterBottom>
-                History Mode
+                历史记录模式
               </Typography>
             </Stack>
             {history.length === 0 && (
               <Stack direction="row" spacing={2}>
                 <Typography variant="h6" m={2} gutterBottom>
-                  No history available
+                  没有可用的历史记录
                 </Typography>
               </Stack>
             )}
@@ -170,14 +170,15 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
                 variant="outlined"
                 color="success"
                 onClick={() => {
-                  handleEditorChange('code', `${viewCode} \n${code}`);
+                  handleEditorChange('code', `${viewCode} 
+${code}`);
                   toggleDrawer();
                 }}
               >
-                Apply Code
+                应用代码
               </Button>
               <Button key={'close'} variant="outlined" color="error" onClick={toggleDrawer}>
-                Close
+                关闭
               </Button>
             </Stack>
           </Box>

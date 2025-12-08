@@ -13,8 +13,8 @@ const ClusterNode = ({ peerId, cluster, dragState, onSlotGrab, onSlotDrop, onDra
 
   const numSlots = cluster.shards.length;
 
-  const shards = cluster.shards.filter((shard) => shard.peer_id === peerId);
-
+  const shards = cluster.shards.filter((shard) => shard.peer_id === peerId); 
+  
   return (
     <StyledNode>
       {(numSlots &&
@@ -55,7 +55,7 @@ const ClusterNode = ({ peerId, cluster, dragState, onSlotGrab, onSlotDrop, onDra
               onDragCancel={onDragCancel}
             />
           );
-        })) || <div>No slots available</div>}
+        })) || <div>没有可用的槽位</div>}
     </StyledNode>
   );
 };

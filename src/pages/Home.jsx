@@ -70,7 +70,7 @@ function HomeContent() {
               {cloudInfo?.cluster_name ? (
                 <Box sx={{ flexGrow: 1, pl: '140px', display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
-                    cluster
+                    集群
                   </Typography>
                   <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
                     /
@@ -108,7 +108,7 @@ function HomeContent() {
                   endIcon={<Rocket size={16} />}
                   sx={{ mr: 2 }}
                 >
-                  Upgrade Cluster
+                  升级集群
                 </Button>
               )}
 
@@ -126,7 +126,7 @@ function HomeContent() {
             Get Managed Cloud
           </Button> */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Tooltip title="API Key">
+                <Tooltip title="API密钥">
                   <IconButton size="large" onClick={() => setApiKeyDialogOpen(true)}>
                     <Key size={20} />
                   </IconButton>

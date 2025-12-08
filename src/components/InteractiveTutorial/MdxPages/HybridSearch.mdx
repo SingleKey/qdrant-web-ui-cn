@@ -1,13 +1,13 @@
-export const title = 'Hybrid Search';
+export const title = '混合搜索';
 
-# Hybrid Search with Sparse and Dense Vectors 
+# 使用稀疏和密集向量的混合搜索
 
-In this tutorial, we will continue to explore hybrid search in Qdrant, focusing on both sparse and dense vectors. 
-This time, we will work with a collection related to `terraforming_plans`, and each data point will have a brief description of its content in the `payload`.
+在本教程中，我们将继续探索Qdrant中的混合搜索，重点关注稀疏和密集向量。
+这次，我们将使用与`terraforming_plans`相关的集合，每个数据点将在`payload`中对其内容进行简要描述。
 
-## Step 1: Create a collection with sparse vectors
+## 步骤1：创建支持稀疏向量的集合
 
-We'll start by creating a collection named `terraforming_plans`. This collection will support both dense vectors for semantic similarity and sparse vectors for keyword-based search.
+我们将从创建一个名为`terraforming_plans`的集合开始。这个集合将同时支持用于语义相似性的密集向量和用于基于关键字的搜索的稀疏向量。
 
 ```json withRunButton=true
 PUT /collections/terraforming_plans
@@ -22,15 +22,15 @@ PUT /collections/terraforming_plans
 }
 ```
 
-### Explanation:
-- **`vectors`**: Configures the dense vector space with 4 dimensions, using cosine similarity for distance measurement.
-- **`sparse_vectors`**: Configures the collection to support sparse vectors for keyword-based indexing.
+### 解释：
+- **`vectors`**：配置具有4维的密集向量空间，使用余弦相似度进行距离测量。
+- **`sparse_vectors`**：配置集合以支持用于基于关键字的索引的稀疏向量。
 
 ---
 
-## Step 2: Insert data points with descriptions
+## 步骤2：插入带有描述的数据点
 
-Now, we'll insert three data points into the `terraforming_plans` collection, each related to a different celestial body (Mars, Jupiter, and Venus). Each point will have both a dense and sparse vector, along with a `description` in the `payload`.
+现在，我们将向`terraforming_plans`集合中插入三个数据点，每个点与不同的天体（火星、木星和金星）相关。每个点将同时具有密集和稀疏向量，以及在`payload`中的`description`。
 
 ```json withRunButton=true
 PUT /collections/terraforming_plans/points
@@ -79,16 +79,16 @@ PUT /collections/terraforming_plans/points
 }
 ```
 
-### Explanation:
-- **Dense vector**: Represents the semantic features of the data point in a numerical form.
-- **Sparse vector (`keywords`)**: Represents the keyword features, with `indices` mapped to specific keywords and `values` representing their relevance.
-- **`payload`**: Provides a short description of the data point's content, making it easier to understand what each vector represents.
+### 解释：
+- **密集向量**：以数值形式表示数据点的语义特征。
+- **稀疏向量（`keywords`）**：表示关键字特征，`indices`映射到特定关键字，`values`表示它们的相关性。
+- **`payload`**：提供数据点内容的简短描述，使理解每个向量代表的内容更容易。
 
 ---
 
-## Step 3: Perform a hybrid search
+## 步骤3：执行混合搜索
 
-Next, perform a hybrid search on the `terraforming_plans` collection, combining both keyword-based (sparse) and semantic (dense) search using Reciprocal Rank Fusion (RRF).
+接下来，在`terraforming_plans`集合上执行混合搜索，使用互逆排名融合（RRF）结合基于关键字的（稀疏）和语义的（密集）搜索。
 
 ```json withRunButton=true
 POST /collections/terraforming_plans/points/query
@@ -114,20 +114,20 @@ POST /collections/terraforming_plans/points/query
 }
 ```
 
-### Explanation:
-- **`prefetch`**: Contains two subqueries:
-  - **Keyword-based query**: Uses the sparse vector (keywords) to search by keyword relevance.
-  - **Dense vector query**: Uses the dense vector for semantic similarity search.
-- **`fusion: rrf`**: Combines the results from both queries using Reciprocal Rank Fusion (RRF), giving priority to points ranked highly in both searches.
-- **`limit`**: Limits the number of results to the top 10.
+### 解释：
+- **`prefetch`**：包含两个子查询：
+  - **基于关键字的查询**：使用稀疏向量（keywords）按关键字相关性进行搜索。
+  - **密集向量查询**：使用密集向量进行语义相似性搜索。
+- **`fusion: rrf`**：使用互逆排名融合（RRF）结合两个查询的结果，优先考虑在两个搜索中都排名较高的点。
+- **`limit`**：将结果数量限制在前10个。
 
 ---
 
-## Summary
+## 总结
 
-In this tutorial, we:
-1. Created a Qdrant collection called `terraforming_plans` that supports hybrid search using both dense and sparse vectors.
-2. Inserted data points with both dense and sparse vectors, as well as descriptions in the payload.
-3. Performed a hybrid search combining keyword relevance and dense vector similarity using Reciprocal Rank Fusion.
+在本教程中，我们：
+1. 创建了一个名为`terraforming_plans`的Qdrant集合，支持使用密集和稀疏向量的混合搜索。
+2. 插入了同时具有密集和稀疏向量以及在负载中带有描述的数据点。
+3. 使用互逆排名融合执行了结合关键字相关性和密集向量相似性的混合搜索。
 
-This approach allows for effective hybrid search, combining textual and semantic search capabilities, which can be highly useful in applications involving complex search requirements.
+这种方法允许有效的混合搜索，结合了文本和语义搜索能力，这在涉及复杂搜索需求的应用中非常有用。

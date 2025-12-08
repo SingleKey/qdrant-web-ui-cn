@@ -31,14 +31,14 @@ const CodeEditorWindow = ({ onChange, code, onChangeResult, customRequestSchema,
   );
 
   function codeParse(codeText) {
-    // Parse JSON
+    // 解析JSON
     if (codeText) {
       try {
         return bigIntJSON.parse(codeText);
       } catch (e) {
         return {
           reqBody: codeText,
-          error: 'Fix the position brackets to run & check the json',
+          error: '修复括号位置以运行和检查JSON',
         };
       }
     }
@@ -47,7 +47,7 @@ const CodeEditorWindow = ({ onChange, code, onChangeResult, customRequestSchema,
   function onRun(codeText) {
     const data = codeParse(codeText);
     if (data.error) {
-      enqueueSnackbar(`Visualization Unsuccessful, error: ${JSON.stringify(data.error)}`, {
+      enqueueSnackbar(`可视化失败, 错误: ${JSON.stringify(data.error)}`, {
         variant: 'error',
       });
       return data;
@@ -115,7 +115,7 @@ const CodeEditorWindow = ({ onChange, code, onChangeResult, customRequestSchema,
       language={'custom-language'}
       value={code}
       theme={'custom-language-theme'}
-      defaultValue="//input"
+      defaultValue="//输入"
       onChange={onChange}
       onMount={handleEditorDidMount}
       beforeMount={handleEditorWillMount}

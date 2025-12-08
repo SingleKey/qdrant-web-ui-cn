@@ -23,7 +23,7 @@ export const RunButton = ({ code, onRun, loading }) => {
       data-testid="code-block-run"
       sx={{ height: '2rem', lineHeight: '2rem', fontSize: '0.8125rem' }}
     >
-      {loading ? 'Running...' : 'Run'}
+      {loading ? '正在执行...' : '执行'}
     </Button>
   );
 };

@@ -39,26 +39,26 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
   const columns = [
     {
       field: 'name',
-      headerName: 'Name',
+      headerName: '名称',
       minWidth: 100,
       valueGetter: (r, v) => v.name,
       flex: 1,
     },
     {
       field: 'time',
-      headerName: 'Time',
+      headerName: '时间',
       width: 100,
       valueGetter: (r, v) => v.time,
     },
     {
       field: 'date',
-      headerName: 'Date',
+      headerName: '日期',
       width: 100,
       valueGetter: (r, v) => v.date,
     },
     {
       field: 'delete',
-      headerName: 'Delete',
+      headerName: '删除',
       width: 100,
       align: 'center',
       headerAlign: 'center',
@@ -97,23 +97,23 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
             }}
           >
             <Typography variant="h5" m={2} gutterBottom>
-              Saved Code
+              已保存代码
             </Typography>
             <Stack direction="row" spacing={2} m={2}>
               <TextField
-                placeholder=" Name (Required)*"
+                placeholder=" 名称 (必填)*"
                 variant="standard"
                 value={saveNameText}
                 onChange={(e) => {
                   setSaveNameText(e.target.value);
                 }}
               />
-              <Button onClick={saveCode}>Save</Button>
+              <Button onClick={saveCode}>保存</Button>
             </Stack>
             {savedCodes.length === 0 && (
               <Stack direction="row" spacing={2}>
                 <Typography variant="h6" m={2} gutterBottom>
-                  No save code found
+                  未找到保存的代码
                 </Typography>
               </Stack>
             )}
@@ -175,14 +175,15 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
                 variant="outlined"
                 color="success"
                 onClick={() => {
-                  handleEditorChange('code', `${viewCode} \n${code}`);
+                  handleEditorChange('code', `${viewCode} 
+${code}`);
                   toggleDrawer();
                 }}
               >
-                Apply Code
+                应用代码
               </Button>
               <Button key={'close'} variant="outlined" color="error" onClick={toggleDrawer}>
-                Close
+                关闭
               </Button>
             </Stack>
           </Box>

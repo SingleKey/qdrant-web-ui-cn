@@ -1,10 +1,10 @@
-export const title = "Basic Filtering"
+export const title = "基础过滤"
 
-# Basic Filtering - Clauses and Conditions
+# 基础过滤 - 子句和条件
 
-## Step 1: Create a Collection
+## 步骤1：创建集合
 
-First, create a collection called `terraforming`. Each point will have vectors of size 4, and the distance metric is set to `Dot`:
+首先创建一个名为`terraforming`的集合。每个点将有大小为4的向量，距离度量设置为`Dot`：
 
 ```json withRunButton="true"
 PUT collections/terraforming
@@ -16,9 +16,9 @@ PUT collections/terraforming
 }
 ```
 
-## Step 2: Add Points with Vectors and Payloads
+## 步骤2：添加带有向量和负载的点
 
-Now, add points to the collection. Each point includes an `id`,  `vector` and a `payload` with various attributes like `land type`, `color`, `life presence`, and `humidity`:
+现在向集合中添加点。每个点包含一个`id`、`vector`和一个带有各种属性的`payload`，如`land type`、`color`、`life presence`和`humidity`：
 
 ```json withRunButton="true"
 PUT collections/terraforming/points
@@ -58,9 +58,9 @@ PUT collections/terraforming/points
 }
 ```
 
-## Step 3: Index the fields before filtering
+## 步骤3：在过滤前索引字段
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index, Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**注意：** 您应该始终在过滤之前索引字段。如果在创建索引之前使用过滤，Qdrant将以非结构化方式搜索整个数据集。您的搜索性能将非常慢。
 
 ```json withRunButton="true"
 PUT /collections/terraforming/index
@@ -89,11 +89,11 @@ PUT /collections/terraforming/index
 }
 ```
 
-## Step 4: Filtering examples
+## 步骤4：过滤示例
 
-### Filter by exact match
+### 精确匹配过滤
 
-Finally, this query retrieves points where the `color` is `"black"`, using a straightforward `match` condition:
+最后，此查询使用简单的`match`条件检索`color`为`"black"`的点：
 
 ```json withRunButton="true"
 POST collections/terraforming/points/scroll
@@ -113,9 +113,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Combined filter by `must` clause
+### 使用`must`子句的组合过滤
 
-In this example, the query returns points where `life` is `true` and `color` is `"green"`. These must conditions both need to be met for a point to be returned.
+在此示例中，查询返回`life`为`true`且`color`为`"green"`的点。这些must条件都需要满足才能返回一个点。
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -131,9 +131,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `should` clause
+### 使用`should`子句过滤
 
-Here, you are filtering for points where `life` is `false` and `color` is `"black"`. These conditions act as *should* clauses, meaning points meeting either or both criteria will be returned:
+在这里，您正在过滤`life`为`false`且`color`为`"black"`的点。这些条件作为*should*子句，意味着满足任一或两个标准的点都将被返回：
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -152,9 +152,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `must_not` clause
+### 使用`must_not`子句过滤
 
-This query filters out any points where `life` is `false`. Points matching this condition are excluded from the results.
+此查询过滤掉任何`life`为`false`的点。匹配此条件的点将从结果中排除。
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -172,9 +172,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `range` condition
+### 使用`range`条件过滤
 
-This query filters points based on a range of `humidity`. Here, the `humidity` value must be exactly 40:
+此查询基于`humidity`的范围过滤点。在这里，`humidity`值必须恰好为40：
 
 ```json withRunButton="true"
 POST collections/terraforming/points/scroll

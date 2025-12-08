@@ -7,17 +7,17 @@ const ClusterInfoHead = () => {
       <TableRow>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Shard ID
+            分片ID
           </Typography>
         </TableCell>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Location
+            位置
           </Typography>
         </TableCell>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Status
+            状态
           </Typography>
         </TableCell>
       </TableRow>

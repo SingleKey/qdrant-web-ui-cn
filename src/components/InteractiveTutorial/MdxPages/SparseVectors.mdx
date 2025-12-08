@@ -1,14 +1,14 @@
-export const title = 'Sparse Vectors';
+export const title = '稀疏向量';
 
-# Sparse Vector Search
+# 稀疏向量搜索
 
-In this tutorial, you'll learn how to create a collection with sparse vectors in Qdrant, insert points with sparse vectors, and query them based on specific indices and values. Sparse vectors allow you to efficiently store and search data with only certain dimensions being non-zero, which is particularly useful in applications like text embeddings or handling sparse data.
+在本教程中，您将学习如何在Qdrant中创建支持稀疏向量的集合，插入带稀疏向量的点，并根据特定索引和值进行查询。稀疏向量允许您高效地存储和搜索只有某些维度为非零的数据，这在文本嵌入或处理稀疏数据等应用中特别有用。
 
-## Step 1: Create a collection with sparse vectors
+## 步骤1：创建支持稀疏向量的集合
 
-The first step is to create a collection that can handle sparse vectors. Unlike dense vectors that represent full feature spaces, sparse vectors only store non-zero values in select positions, making them more efficient. We’ll create a collection called `sparse_charts` where each point will have sparse vectors to represent keywords or other features.
+第一步是创建一个可以处理稀疏向量的集合。与表示完整特征空间的密集向量不同，稀疏向量仅在选定位置存储非零值，使其更加高效。我们将创建一个名为`sparse_charts`的集合，其中每个点将具有稀疏向量来表示关键词或其他特征。
 
-Run the following request to create the collection:
+运行以下请求以创建集合：
 
 ```json withRunButton=true
 PUT /collections/sparse_charts
@@ -19,18 +19,18 @@ PUT /collections/sparse_charts
 }
 ```
 
-### Explanation:
-- **`sparse_vectors`**: Defines that the collection supports sparse vectors, in this case, indexed by "keywords." This can represent keyword-based features where only certain indices (positions) have non-zero values.
+### 解释：
+- **`sparse_vectors`**：定义集合支持稀疏向量，在这种情况下，由"keywords"索引。这可以表示基于关键词的特征，其中只有某些索引（位置）具有非零值。
 
 ---
 
-## Step 2: Insert data points with sparse vectors
+## 步骤2：插入带稀疏向量的数据点
 
-Once the collection is ready, you can insert points with sparse vectors. Each point will include:
-- `indices`: The positions of non-zero values in the vector space.
-- `values`: The corresponding values at those positions, representing the importance or weight of each keyword or feature.
+集合准备就绪后，您可以插入带稀疏向量的点。每个点将包括：
+- `indices`：向量空间中非零值的位置。
+- `values`：这些位置对应的值，表示每个关键词或特征的重要性或权重。
 
-Run the following request to insert the points:
+运行以下请求以插入点：
 
 ```json withRunButton=true
 PUT /collections/sparse_charts/points
@@ -85,15 +85,15 @@ PUT /collections/sparse_charts/points
 }
 ```
 
-### Explanation:
-- Each point is represented by its sparse vector, defined with specific keyword indices and values.
-- For example, **Point 1** has sparse vector values of `0.22` and `0.8` at positions `1` and `42`, respectively. These could represent the relative importance of keywords associated with those positions.
+### 解释：
+- 每个点由其稀疏向量表示，使用特定的关键词索引和值定义。
+- 例如，**点1**在位置`1`和`42`处分别具有稀疏向量值`0.22`和`0.8`。这些可以表示与这些位置相关联的关键词的相对重要性。
 
 ---
 
-## Run a query with specific indices and values
+## 使用特定索引和值运行查询
 
-This query searches for points that have non-zero values at the positions `[1, 42]` and specific values `[0.22, 0.8]`. This is a targeted query and expects a close match to these indices and values.
+此查询搜索在位置`[1, 42]`具有非零值且具有特定值`[0.22, 0.8]`的点。这是一个有针对性的查询，期望与这些索引和值有紧密匹配。
 
 ```json withRunButton=true
 POST /collections/sparse_charts/points/query
@@ -106,13 +106,13 @@ POST /collections/sparse_charts/points/query
 }
 ```
 
-**Expected result:** **Point 1** would be the best match since its sparse vector includes these indices that maximize the measure of similarity. In this case, this is the dot product calculation.
+**预期结果：** **点1**将是最佳匹配，因为其稀疏向量包含这些索引，可以最大化相似性度量。在这种情况下，这是点积计算。
 
 ---
 
-## Breaking down the scoring mechanism
+## 分解评分机制
 
-This query searches for points with non-zero values at positions `[0, 2, 4]` and values `[0.4, 0.9, 0.8]`. It’s a broader search that might return multiple matches with overlapping indices and similar values.
+此查询搜索在位置`[0, 2, 4]`具有非零值且具有值`[0.4, 0.9, 0.8]`的点。这是一个更广泛的搜索，可能会返回具有重叠索引和相似值的多个匹配项。
 
 ```json withRunButton=true
 POST /collections/sparse_charts/points/query
@@ -126,21 +126,21 @@ POST /collections/sparse_charts/points/query
 ```
 ---
 
-## How we got this result:
+## 我们如何得到这个结果：
 
-Let's assume the sparse vectors of **Point 4** and **Point 5** are as follows:
-- **Point 4**: `[0.4, 0, 0, 0, 0]`  (Matches query at index 0 with value 0.4)
-- **Point 5**: `[0, 0, 0.9, 0, 0.8]`  (Matches query at indices 2 and 4 with values 0.9 and 0.8)
+让我们假设**点4**和**点5**的稀疏向量如下：
+- **点4**：`[0.4, 0, 0, 0, 0]`  （在索引0处与查询匹配，值为0.4）
+- **点5**：`[0, 0, 0.9, 0, 0.8]`  （在索引2和4处与查询匹配，值为0.9和0.8）
 
-The dot product would look something like:
-- **Dot product for Point 4**: 
-   - Query: `[0.4, 0, 0.9, 0, 0.8]`
-   - Point 4: `[0.4, 0, 0, 0, 0]`
-   - Dot product: ( 0.4 * 0.4 = 0.16 \)
+点积将如下所示：
+- **点4的点积**：
+   - 查询：`[0.4, 0, 0.9, 0, 0.8]`
+   - 点4：`[0.4, 0, 0, 0, 0]`
+   - 点积：( 0.4 * 0.4 = 0.16 )
 
-- **Dot product for Point 5**:
-   - Query: `[0.4, 0, 0.9, 0, 0.8]`
-   - Point 5: `[0, 0, 0.9, 0, 0.8]`
-   - Dot product: ( 0.9 * 0.9 + 0.8 * 0.8 = 0.81 + 0.64 = 1.45 )
+- **点5的点积**：
+   - 查询：`[0.4, 0, 0.9, 0, 0.8]`
+   - 点5：`[0, 0, 0.9, 0, 0.8]`
+   - 点积：( 0.9 * 0.9 + 0.8 * 0.8 = 0.81 + 0.64 = 1.45 )
 
-Since **Point 5** has a higher dot product score, it would be considered a better match than **Point 4**.
+由于**点5**具有更高的点积分，它将被认为比**点4**更好的匹配。

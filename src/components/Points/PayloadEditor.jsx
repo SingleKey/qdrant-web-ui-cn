@@ -78,7 +78,7 @@ export const PayloadEditor = memo(({ point, open, onClose, onSave, setLoading })
         if (onSave && res.status === 'completed') {
           onSave(payloadToSave);
 
-          enqueueSnackbar('Payload saved', successSnackbarOptions);
+          enqueueSnackbar('Payload已保存', successSnackbarOptions);
         }
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ export const PayloadEditor = memo(({ point, open, onClose, onSave, setLoading })
     <>
       <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
         <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <>Edit payload for point {point.id}</>
+          <>编辑点 {point.id} 的payload</>
         </DialogTitle>
         <DialogContent sx={{ pb: 1 }}>
           <EditorCommon
@@ -131,17 +131,17 @@ export const PayloadEditor = memo(({ point, open, onClose, onSave, setLoading })
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
           <Button onClick={onClose} color="inherit" variant="outlined" sx={{ mr: 1 }}>
-            Cancel
+            取消
           </Button>
           <Button onClick={handleSave} color="primary" variant="contained">
-            Save
+            保存
           </Button>
         </DialogActions>
       </Dialog>
 
       <Dialog open={showDiff} onClose={() => setShowDiff(false)} fullWidth maxWidth="lg">
         <DialogTitle>
-          <>Confirm to save payload changes</>
+          <>确认保存payload更改</>
         </DialogTitle>
         <DialogContent
           sx={{
@@ -180,10 +180,10 @@ export const PayloadEditor = memo(({ point, open, onClose, onSave, setLoading })
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setShowDiff(false)} color="inherit" variant="outlined" sx={{ mr: 1 }}>
-            Cancel
+            取消
           </Button>
           <Button onClick={handleConfirmSave} color="primary" variant="contained">
-            Confirm
+            确认
           </Button>
         </DialogActions>
       </Dialog>

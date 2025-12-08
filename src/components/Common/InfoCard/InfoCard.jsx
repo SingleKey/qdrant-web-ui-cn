@@ -152,7 +152,7 @@ const InfoCard = ({ icon: Icon, iconVariant, title, description, iconColor, link
         {showCta && href && (
           <StyledCardActions>
             <StyledLink component="span" className={isSideIconWithCta(iconVariant, showCta) ? 'add-margin-left' : ''}>
-              {linkText || 'Learn More'} <ChevronRight size="16px" />
+              {linkText || '了解更多'} <ChevronRight size="16px" />
             </StyledLink>
           </StyledCardActions>
         )}
