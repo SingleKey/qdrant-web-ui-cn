@@ -9,11 +9,19 @@ export default defineConfig(async () => {
   const mdx = await import('@mdx-js/rollup');
 
   return {
-    base: './',
+    base: 'dashboard',
     // This changes the output dir from dist to build
     // comment this out if that isn't relevant for your project
     build: {
       outDir: 'dist',
+      assetsDir: 'assets',
+      rollupOptions: {
+        output: {
+          assetFileNames: 'assets/[name].[ext]',
+          chunkFileNames: 'assets/[name].[hash].js',
+          entryFileNames: 'assets/[name].[hash].js',
+        },
+      },
     },
     plugins: [
       reactRefresh(),

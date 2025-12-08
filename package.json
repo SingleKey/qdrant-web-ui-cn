@@ -32,6 +32,7 @@
     "force-graph": "^1.43.5",
     "jose": "^5.2.3",
     "jsonc-parser": "^3.2.0",
+    "jtd": "^0.1.1",
     "lodash": "^4.17.21",
     "lucide-react": "^0.545.0",
     "monaco-editor": "^0.44.0",
@@ -61,7 +62,7 @@
     "test": "vitest",
     "eject": "vite eject",
     "start": "vite",
-    "build": "vite build --base './'",
+    "build": "vite build",
     "build-qdrant": "vite build --base '/dashboard/'",
     "serve": "vite preview",
     "lint": "eslint  src --ext .js,.jsx,.ts,.tsx",
@@ -97,3 +98,4 @@
     "vitest": "^3.1.2"
   }
 }
+
