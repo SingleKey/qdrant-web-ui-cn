@@ -1,7 +1,7 @@
 import { OpenapiAutocomplete } from 'autocomplete-openapi/src/autocomplete';
 
 export const autocomplete = async (monaco, qdrantClient, collectionName, customRequestSchema) => {
-  const response = await fetch(import.meta.env.BASE_URL + './openapi.json');
+  const response = await fetch(import.meta.env.BASE_URL + '/openapi.json');
   const openapi = await response.json();
 
   const vectorNames = [];

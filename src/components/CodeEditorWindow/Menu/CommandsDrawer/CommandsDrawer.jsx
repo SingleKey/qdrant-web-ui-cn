@@ -17,7 +17,7 @@ const CommandsDrawer = ({ open, toggleDrawer, handleInsertCommand }) => {
   const errorSnackbarOptions = getSnackbarOptions('error', closeSnackbar, 6000);
 
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + './openapi.json')
+    fetch(import.meta.env.BASE_URL + '/openapi.json')
       .then((response) => response.json())
       .then((data) => {
         const nextCommands = Object.keys(data.paths)

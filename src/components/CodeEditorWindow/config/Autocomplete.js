@@ -3,7 +3,7 @@ import { enhanceSnippet } from './snippetEnhancer';
 import { customSnippets } from './customSnippets';
 
 export const autocomplete = async (monaco, qdrantClient) => {
-  const response = await fetch(import.meta.env.BASE_URL + './openapi.json');
+  const response = await fetch(import.meta.env.BASE_URL + '/openapi.json');
   const openapi = await response.json();
 
   let collections = [];
