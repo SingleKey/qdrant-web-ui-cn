@@ -33,11 +33,15 @@ export const Dropdown = ({ config, stepData, onChange }) => {
           },
         }}
       >
-        {config.options.map((option) => (
-          <MenuItem key={option} value={option}>
-            {option}
-          </MenuItem>
-        ))}
+        {config.options.map((option) => {
+          const optionValue = typeof option === 'object' ? option.value : option;
+          const optionLabel = typeof option === 'object' ? option.label : option;
+          return (
+            <MenuItem key={optionValue} value={optionValue}>
+              {optionLabel}
+            </MenuItem>
+          );
+        })}
       </Select>
       {config.description && <Description config={config} sx={{ mt: "3px" }} />}
     </CCFormControl>
@@ -47,7 +51,15 @@ export const Dropdown = ({ config, stepData, onChange }) => {
 // props validation
 Dropdown.propTypes = {
   config: PropTypes.shape({
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          value: PropTypes.string.isRequired,
+        }),
+      ])
+    ).isRequired,
     name: PropTypes.string.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,

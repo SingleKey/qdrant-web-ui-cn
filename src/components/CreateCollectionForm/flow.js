@@ -26,7 +26,24 @@ export const elements = {
       {
         type: "dropdown",
         name: "metric",
-        options: ["余弦相似度（Cosine）", "欧几里得距离（Euclid）", "点积（Dot）", "曼哈顿距离（Manhattan）"],
+        options: [
+          {
+            label: "余弦相似度（Cosine）",
+            value: "Cosine",
+          },
+          {
+            label: "欧几里得距离（Euclid）",
+            value: "Euclid",
+          },
+          {
+            label: "点积（Dot）",
+            value: "Dot",
+          },
+          {
+            label: "曼哈顿距离（Manhattan）",
+            value: "Manhattan",
+          },
+        ],
         default: "Cosine",
         title: "选择相似度度量方式",
       },
